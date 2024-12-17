@@ -101,9 +101,9 @@ namespace FerreteriaApp.Vistas
 
         private void sbGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(teCodigo.Text) && string.IsNullOrEmpty(teNombre.Text) &&
-                string.IsNullOrEmpty(teDescripcion.Text) && string.IsNullOrEmpty(teStock.Text) && string.IsNullOrEmpty(tePrecioC.Text) &&
-                string.IsNullOrEmpty(tePrecioV.Text) && slueCategoria.EditValue == null && slueMedida.EditValue == null)
+            if (string.IsNullOrEmpty(teCodigo.Text) | string.IsNullOrEmpty(teNombre.Text) ||
+                string.IsNullOrEmpty(teDescripcion.Text) || string.IsNullOrEmpty(teStock.Text) || string.IsNullOrEmpty(tePrecioC.Text) ||
+                string.IsNullOrEmpty(tePrecioV.Text) || slueCategoria.EditValue == null && slueMedida.EditValue == null)
             {
                 MessageBox.Show("Campos Requeridos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;

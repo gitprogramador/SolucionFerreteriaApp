@@ -6,118 +6,122 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static DevExpress.XtraEditors.Mask.MaskSettings;
 
 namespace FerreteriaApp.Gestion_BD
 {
     public class Operaciones_Base_de_Datos
     {
-        // Configuración de conexión
-        private string Server { get; set; } = "localhost";
-        private string Database { get; set; } = "bdatosfer";
-        private string User { get; set; } = "root";
-        private string Password { get; set; } = "root";
+        private string server = "localhost";         // Dirección del servidor MySQL
+        private string user = "root";         // Nombre de usuario para la base de datos
+        private string password = "root"; // Contraseña del usuario
+        private string database = "bdatosfer";      // Nombre de la base de datos
 
-        // Constructor
-        public void OperacionesBaseDatos()
-        {
-            // Constructor vacío, puedes inicializar variables si lo necesitas
-        }
+        // Ruta del ejecutable de MySQL y mysqldump
+        private string mysqlPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe";
+        private string mysqldumpPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
 
-        /// <summary>
-        /// Realiza un respaldo de la base de datos MySQL.
-        /// </summary>
-        /// <param name="backupFilePath">Ruta del archivo donde se guardará el respaldo.</param>
-        public void Respaldo(string backupFilePath)
+        // Constructor sin parámetros, los valores ya están definidos en las variables
+        public Operaciones_Base_de_Datos() { }
+
+        // Método para realizar la restauración desde un archivo SQL
+        public bool RestaurarBaseDeDatos(string backupFilePath)
         {
             try
             {
-                string mysqldumpPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqldump.exe";
-
-                if (!File.Exists(mysqldumpPath))
-                {
-                    MessageBox.Show("No se encontró mysqldump en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                // Parámetros para el respaldo incluyendo procedimientos, triggers y eventos
-                string arguments = $"--routines --triggers --events -h {Server} -u {User} -p{Password} {Database} -r \"{backupFilePath}\"";
-
-                ProcessStartInfo startInfo = new ProcessStartInfo
-                {
-                    FileName = mysqldumpPath,
-                    Arguments = arguments,
-                    UseShellExecute = false,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
-                };
-
-                Process process = Process.Start(startInfo);
-                string errorOutput = process.StandardError.ReadToEnd();
-                process.WaitForExit();
-
-                if (process.ExitCode == 0)
-                {
-                    MessageBox.Show("Respaldo completado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Error durante el respaldo: {errorOutput}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error en el respaldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        /// <summary>
-        /// Restaura la base de datos MySQL a partir de un archivo de respaldo.
-        /// </summary>
-        /// <param name="backupFilePath">Ruta del archivo de respaldo.</param>
-        public void Restauracion(string backupFilePath)
-        {
-            try
-            {
-                string mysqlPath = @"C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe";
-
-                if (!File.Exists(mysqlPath))
-                {
-                    MessageBox.Show("No se encontró mysql en la ruta especificada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
+                // Asegúrate de que el archivo exista
                 if (!File.Exists(backupFilePath))
                 {
-                    MessageBox.Show("El archivo de respaldo especificado no existe.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
+                    throw new FileNotFoundException("El archivo de respaldo no existe.");
                 }
 
-                ProcessStartInfo startInfo = new ProcessStartInfo
+                // Comando para restaurar la base de datos
+                string restoreCommand = $"--host={server} --user={user} --password={password} --database={database} --execute=\"source {backupFilePath}\"";
+
+                ProcessStartInfo restoreProcessInfo = new ProcessStartInfo()
                 {
-                    FileName = "cmd.exe",
-                    Arguments = $"/C \"{mysqlPath} -h {Server} -u {User} -p{Password} {Database} < \"{backupFilePath}\"\"",
+                    FileName = mysqlPath,
+                    Arguments = restoreCommand,
                     UseShellExecute = false,
-                    RedirectStandardError = true,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    RedirectStandardError = true, // Redirigir el error estándar
+                    RedirectStandardOutput = true  // Redirigir la salida estándar
                 };
 
-                Process process = Process.Start(startInfo);
-                string errorOutput = process.StandardError.ReadToEnd();
-                process.WaitForExit();
+                // Ejecutar el proceso
+                using (Process restoreProcess = Process.Start(restoreProcessInfo))
+                {
+                    string output = restoreProcess.StandardOutput.ReadToEnd();
+                    string error = restoreProcess.StandardError.ReadToEnd();
 
-                if (process.ExitCode == 0)
-                {
-                    MessageBox.Show("Restauración completada correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    MessageBox.Show($"Error durante la restauración: {errorOutput}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    restoreProcess.WaitForExit();
+
+                    // Verificar el código de salida
+                    if (restoreProcess.ExitCode == 0)
+                    {
+                        // Mostrar la salida de la restauración para depuración (opcional)
+                        Console.WriteLine("Salida de la restauración: ");
+                        Console.WriteLine(output);
+                        return true; // Restauración exitosa
+                    }
+                    else
+                    {
+                        // Mostrar el error de la restauración para depuración
+                        Console.WriteLine("Error de la restauración: ");
+                        Console.WriteLine(error);
+                        throw new Exception($"Error en la restauración: {error}");
+                    }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocurrió un error en la restauración: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine($"Error al restaurar la base de datos: {ex.Message}");
+                return false;
             }
         }
+
+        // Método para realizar el respaldo de la base de datos
+        public bool RespaldarBaseDeDatos(string backupFilePath)
+        {
+            try
+            {
+                string backupCommand = $"--host={server} --user={user} --password={password} --databases {database} --routines --events --result-file=\"{backupFilePath}\"";
+
+                ProcessStartInfo backupProcessInfo = new ProcessStartInfo()
+                {
+                    FileName = mysqldumpPath,
+                    Arguments = backupCommand,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true
+                };
+
+                // Ejecutar el proceso de respaldo
+                using (Process backupProcess = Process.Start(backupProcessInfo))
+                {
+                    string output = backupProcess.StandardOutput.ReadToEnd();
+                    string error = backupProcess.StandardError.ReadToEnd();
+
+                    backupProcess.WaitForExit();
+
+                    // Verificar el código de salida
+                    if (backupProcess.ExitCode == 0)
+                    {
+                        return true; // Respaldo exitoso
+                    }
+                    else
+                    {
+                        throw new Exception($"Error en el respaldo: {error}");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error al respaldar la base de datos: {ex.Message}");
+                return false;
+            }
+        }
+    
     }
 }

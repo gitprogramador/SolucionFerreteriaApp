@@ -201,9 +201,9 @@ namespace FerreteriaApp.Vistas
         private void sbGuardar_Click(object sender, EventArgs e)
         {
 
-            if (string.IsNullOrEmpty(teDocumento.Text) &&
-                string.IsNullOrEmpty(teCorreo.Text) &&
-                string.IsNullOrEmpty(teRazonSocial.Text) &&
+            if (string.IsNullOrEmpty(teDocumento.Text) ||
+                string.IsNullOrEmpty(teCorreo.Text) ||
+                string.IsNullOrEmpty(teRazonSocial.Text) ||
                 string.IsNullOrEmpty(teTel.Text))
             {
                 MessageBox.Show("Campos Requeridos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

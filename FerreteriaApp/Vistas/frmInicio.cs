@@ -43,8 +43,16 @@ namespace FerreteriaApp.Vistas
                 try
                 {
                     Operaciones_Base_de_Datos op = new Operaciones_Base_de_Datos();
-                    op.Respaldo(rutaArchivo);
-                    MessageBox.Show("Respaldo realizado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool exito = op.RespaldarBaseDeDatos(rutaArchivo);  // Llamada al método correcto
+
+                    if (exito)
+                    {
+                        MessageBox.Show("Respaldo realizado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema al realizar el respaldo", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -65,8 +73,16 @@ namespace FerreteriaApp.Vistas
                 try
                 {
                     Operaciones_Base_de_Datos op = new Operaciones_Base_de_Datos();
-                    op.Restauracion(rutaArchivo);
-                    MessageBox.Show("Restauración completada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    bool exito = op.RestaurarBaseDeDatos(rutaArchivo);  // Llamada al método correcto
+
+                    if (exito)
+                    {
+                        MessageBox.Show("Restauración completada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Hubo un problema al restaurar la base de datos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 catch (Exception ex)
                 {

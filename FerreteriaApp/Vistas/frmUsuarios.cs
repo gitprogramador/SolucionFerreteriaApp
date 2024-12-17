@@ -24,6 +24,7 @@ namespace FerreteriaApp.Vistas
             InitializeComponent();
             Botones(true,false,false,false,false,false, false);
             CargarUsuarios();
+            CargarRoles();
             this.UsuarioActualId = userActual;
         }
         #region Metodos
@@ -31,6 +32,16 @@ namespace FerreteriaApp.Vistas
         {
             xpCollectionUsuarios.Reload();
         }
+        private void CargarRoles()
+        {
+            // Filtrar los roles con CriteriaOperator para excluir el rol con ID 4
+            CriteriaOperator criterio = CriteriaOperator.Parse("IdRol != ?", 4);
+            xpCollectionRoles.Criteria = criterio;  // Establecer el criterio de filtrado
+
+            // Recargar la colección con los roles filtrados
+            xpCollectionRoles.Reload();  // Recargar los roles filtrados
+        }
+
 
         private void Limpiar()
         {
@@ -73,13 +84,17 @@ namespace FerreteriaApp.Vistas
             string usuario = teUsuario.Text;
             string pwd = tePwd.Text;
             Rol rol = (Rol)slueRol.GetFocusedRow();
-            if (rol == null && string.IsNullOrEmpty(nombre) && string.IsNullOrEmpty(usuario) && string.IsNullOrEmpty(pwd))
-            {
-                MessageBox.Show("Campos Requeridos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
+
             try
             {
+                // Validación de campos vacíos
+                if (rol == null || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(pwd))
+                {
+                    MessageBox.Show("Campos Requeridos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                // Crear y guardar el nuevo usuario
                 Usuario newuser = new Usuario(unitOfWork1)
                 {
                     NombreCompleto = nombre,
@@ -88,18 +103,24 @@ namespace FerreteriaApp.Vistas
                     IdRol = rol,
                     Estado = 1
                 };
+
+                // Verificar que no haya registros vacíos antes de guardar
                 newuser.Save();
-                unitOfWork1.CommitChanges();
+                unitOfWork1.CommitChanges();  // Confirmar los cambios
+
+                // Limpiar el formulario y recargar la lista de usuarios
                 Limpiar();
                 CargarUsuarios();
-                Botones(true,false, false, false, false, false,false);
-            }
-            catch (Exception)
-            {
 
-                throw;
+                // Actualizar los botones
+                Botones(true, false, false, false, false, false, false);
             }
-            
+            catch (Exception ex)
+            {
+                // Mostrar mensaje de error
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
