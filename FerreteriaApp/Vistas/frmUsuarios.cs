@@ -17,20 +17,19 @@ namespace FerreteriaApp.Vistas
 {
     public partial class frmUsuarios : MetroFramework.Forms.MetroForm
     {
-        public frmUsuarios()
+        public int UsuarioActualId { get; set; } // Guarda el ID del usuario autenticado
+
+        public frmUsuarios(int userActual)
         {
             InitializeComponent();
             Botones(true,false,false,false,false,false, false);
             CargarUsuarios();
+            this.UsuarioActualId = userActual;
         }
         #region Metodos
         private void CargarUsuarios()
         {
-            // Establece el filtro directamente en el xpCollection para excluir los usuarios con IdRol igual a 4
-            xpCollectionUsuarios.Criteria = CriteriaOperator.Parse("IdRol <> 4");
-
-            // Asigna el xpCollection filtrado como fuente de datos del GridControl
-            gridControl1.DataSource = xpCollectionUsuarios;
+            xpCollectionUsuarios.Reload();
         }
 
         private void Limpiar()
@@ -116,6 +115,16 @@ namespace FerreteriaApp.Vistas
 
         private void sbActualizar_Click(object sender, EventArgs e)
         {
+            // Obtener el usuario actual de XPCollection
+            Usuario usuarioActual = xpCollectionUsuarios.OfType<Usuario>()
+                                       .FirstOrDefault(u => u.IdUsuario == UsuarioActualId);
+
+            // Validar si el usuario autenticado existe
+            if (usuarioActual == null)
+            {
+                MessageBox.Show("No se pudo obtener la información del usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string nombre = teNombreCompleto.Text;
             string usuario = teUsuario.Text;
             string pwd = tePwd.Text;
@@ -125,7 +134,17 @@ namespace FerreteriaApp.Vistas
                 MessageBox.Show("Seleccione un registro ", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
             Usuario userSeleccionado = (Usuario)gridView1.GetFocusedRow();
+
+            // Restricción: Si el usuario actual es Admin (IdRol == 1) no puede modificar un SuperAdmin (IdRol == 4)
+            if (usuarioActual.IdRol.IdRol == 1 && userSeleccionado.IdRol.IdRol == 4)
+            {
+                MessageBox.Show("No puede editar a un SuperAdmin.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
             string oldPwd = userSeleccionado.Pwd;
             string newPwd = pwd.Trim();
             try
@@ -158,6 +177,16 @@ namespace FerreteriaApp.Vistas
 
         private void sbEliminar_Click(object sender, EventArgs e)
         {
+            // Obtener el usuario actual de XPCollection
+            Usuario usuarioActual = xpCollectionUsuarios.OfType<Usuario>()
+                                       .FirstOrDefault(u => u.IdUsuario == UsuarioActualId);
+
+            // Validar si el usuario autenticado existe
+            if (usuarioActual == null)
+            {
+                MessageBox.Show("No se pudo obtener la información del usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             string nombre = teNombreCompleto.Text;
             string usuario = teUsuario.Text;
  
@@ -167,6 +196,13 @@ namespace FerreteriaApp.Vistas
                 return;
             }
             Usuario userSeleccionado = (Usuario)gridView1.GetFocusedRow();
+
+            // Restricción: Si el usuario actual es Admin (IdRol == 1) no puede eliminar un SuperAdmin (IdRol == 4)
+            if (usuarioActual.IdRol.IdRol == 1 && userSeleccionado.IdRol.IdRol == 4)
+            {
+                MessageBox.Show("No puede eliminar a un SuperAdmin.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 userSeleccionado.Delete();
@@ -184,12 +220,28 @@ namespace FerreteriaApp.Vistas
 
         private void sbCambiarEstado_Click(object sender, EventArgs e)
         {
+            // Obtener el usuario actual de XPCollection
+            Usuario usuarioActual = xpCollectionUsuarios.OfType<Usuario>()
+                                       .FirstOrDefault(u => u.IdUsuario == UsuarioActualId);
+
+            // Validar si el usuario autenticado existe
+            if (usuarioActual == null)
+            {
+                MessageBox.Show("No se pudo obtener la información del usuario actual.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (gridView1.GetFocusedRow() == null || cbeRol.EditValue == null || string.IsNullOrEmpty(teNombreCompleto.Text) || string.IsNullOrEmpty(teUsuario.Text))
             {
                 MessageBox.Show("Seleccione un registro", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             Usuario userSeleccionado = (Usuario)gridView1.GetFocusedRow();
+            // Restricción: Si el usuario actual es Admin (IdRol == 1) no puede cambiar el estado de un SuperAdmin (IdRol == 4)
+            if (usuarioActual.IdRol.IdRol == 1 && userSeleccionado.IdRol.IdRol == 4)
+            {
+                MessageBox.Show("No puede cambiar el estado de un SuperAdmin.", "Acceso denegado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             try
             {
                 if(userSeleccionado.Estado == 1)

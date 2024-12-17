@@ -27,71 +27,51 @@ namespace FerreteriaApp.Vistas
         #region "Botones de Respaldo y Restauracion"
         private void respaldarBDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Archivos SQL (*.sql)|*.sql";
+            sfd.Title = "Seleccione la ruta de guardado";
+
+            // Establecer el nombre por defecto
+            string fechaHoraActual = DateTime.Now.ToString("yyyyMMdd_HHmmss");
+            string nombreBaseDeDatos = "bdatosfer"; // Reemplaza con el nombre de tu base de datos
+            string nombreArchivo = $"Respaldo_{nombreBaseDeDatos}_{fechaHoraActual}.sql";
+            sfd.FileName = nombreArchivo;
+
+            if (sfd.ShowDialog() == DialogResult.OK)
             {
-                // Crear una instancia de la clase de respaldo
-                Operaciones_Base_de_Datos backupRestore = new Operaciones_Base_de_Datos();
-
-                // Generar el nombre del archivo con fecha y hora
-                string timestamp = DateTime.Now.ToString("yyyyMMdd_HHmmss");
-                string backupFileName = $"Respaldo_base_datos_bdatosfer_{timestamp}.sql";
-
-                // Definir la ruta donde se guardará el respaldo
-                string backupFilePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), backupFileName);
-
-                // Realizar el respaldo
-                backupRestore.BackupDatabase(backupFilePath);
-
-                // Mostrar mensaje de éxito
-                MessageBox.Show($"Respaldo completado: {backupFilePath}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Mostrar mensaje de error
-                MessageBox.Show($"Error al realizar el respaldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string rutaArchivo = sfd.FileName;
+                try
+                {
+                    Operaciones_Base_de_Datos op = new Operaciones_Base_de_Datos();
+                    op.Respaldo(rutaArchivo);
+                    MessageBox.Show("Respaldo realizado con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al realizar el respaldo: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void restaurarBDToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Archivos SQL (*.sql)|*.sql";
+            ofd.Title = "Seleccione el archivo de respaldo";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
             {
-                // Crear una instancia de la clase de respaldo/restauración
-                Operaciones_Base_de_Datos backupRestore = new Operaciones_Base_de_Datos();
-
-                // Abrir un cuadro de diálogo para seleccionar el archivo de respaldo
-                OpenFileDialog openFileDialog = new OpenFileDialog
+                string rutaArchivo = ofd.FileName;
+                try
                 {
-                    Title = "Seleccionar archivo de respaldo",
-                    Filter = "Archivos SQL (*.sql)|*.sql",
-                    InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop)
-                };
-
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string backupFilePath = openFileDialog.FileName;
-
-                    // Confirmar con el usuario antes de proceder con la restauración
-                    var confirmResult = MessageBox.Show(
-                        "¿Estás seguro de que deseas restaurar la base de datos? Esto sobrescribirá los datos existentes.",
-                        "Confirmar restauración",
-                        MessageBoxButtons.YesNo,
-                        MessageBoxIcon.Warning);
-
-                    if (confirmResult == DialogResult.Yes)
-                    {
-                        // Realizar la restauración
-                        backupRestore.RestoreDatabase(backupFilePath);
-
-                        // Mostrar mensaje de éxito
-                        MessageBox.Show("Restauración completada con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    Operaciones_Base_de_Datos op = new Operaciones_Base_de_Datos();
+                    op.Restauracion(rutaArchivo);
+                    MessageBox.Show("Restauración completada con éxito", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            catch (Exception ex)
-            {
-                // Mostrar mensaje de error
-                MessageBox.Show($"Error al realizar la restauración: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error al restaurar la base de datos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -100,7 +80,7 @@ namespace FerreteriaApp.Vistas
         
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUsuarios frm = new frmUsuarios();
+            frmUsuarios frm = new frmUsuarios(IdUsuario.IdUsuario);
             frm.ShowDialog();
         }
 
