@@ -32,6 +32,8 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.slueProductos = new DevExpress.XtraEditors.SearchLookUpEdit();
+            this.xpCollectionProductos = new DevExpress.Xpo.XPCollection(this.components);
+            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.slueViewProductos = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdProducto = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCodigo = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -56,30 +58,22 @@
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
             this.slueProveedores = new DevExpress.XtraEditors.SearchLookUpEdit();
-            this.slueViewProveedores = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.teTotal = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.sbProcesar = new DevExpress.XtraEditors.SimpleButton();
-            this.sbCancelar = new DevExpress.XtraEditors.SimpleButton();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
-            this.xpCollectionProductos = new DevExpress.Xpo.XPCollection(this.components);
             this.xpCollectionProveedores = new DevExpress.Xpo.XPCollection(this.components);
-            this.xpCollectionDetalles = new DevExpress.Xpo.XPCollection(this.components);
+            this.slueViewProveedores = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdProveedor = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colDocumento = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colRazonSocial = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colCorreo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTelefono = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colEstado1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.teTotal = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.xpCollectionDetalles = new DevExpress.Xpo.XPCollection(this.components);
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colIdDetalleCompra = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn5 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn6 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -90,11 +84,19 @@
             this.colCantidad = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colMontoTotal = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn9 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.sbProcesar = new DevExpress.XtraEditors.SimpleButton();
+            this.sbCancelar = new DevExpress.XtraEditors.SimpleButton();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slueProductos.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).BeginInit();
@@ -108,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
             this.layoutControl3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.slueProveedores.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProveedores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTotal.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
@@ -116,15 +119,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProveedores)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalles)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -170,6 +170,11 @@
             this.slueProductos.Size = new System.Drawing.Size(473, 26);
             this.slueProductos.StyleController = this.layoutControl2;
             this.slueProductos.TabIndex = 4;
+            // 
+            // xpCollectionProductos
+            // 
+            this.xpCollectionProductos.ObjectType = typeof(FerreteriaApp.bdatosfer.Producto);
+            this.xpCollectionProductos.Session = this.unitOfWork1;
             // 
             // slueViewProductos
             // 
@@ -410,6 +415,11 @@
             this.slueProveedores.StyleController = this.layoutControl3;
             this.slueProveedores.TabIndex = 4;
             // 
+            // xpCollectionProveedores
+            // 
+            this.xpCollectionProveedores.ObjectType = typeof(FerreteriaApp.bdatosfer.Proveedor);
+            this.xpCollectionProveedores.Session = this.unitOfWork1;
+            // 
             // slueViewProveedores
             // 
             this.slueViewProveedores.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
@@ -423,6 +433,40 @@
             this.slueViewProveedores.Name = "slueViewProveedores";
             this.slueViewProveedores.OptionsSelection.EnableAppearanceFocusedCell = false;
             this.slueViewProveedores.OptionsView.ShowGroupPanel = false;
+            // 
+            // colIdProveedor
+            // 
+            this.colIdProveedor.FieldName = "IdProveedor";
+            this.colIdProveedor.Name = "colIdProveedor";
+            // 
+            // colDocumento
+            // 
+            this.colDocumento.FieldName = "Documento";
+            this.colDocumento.Name = "colDocumento";
+            // 
+            // colRazonSocial
+            // 
+            this.colRazonSocial.FieldName = "RazonSocial";
+            this.colRazonSocial.Name = "colRazonSocial";
+            this.colRazonSocial.Visible = true;
+            this.colRazonSocial.VisibleIndex = 0;
+            // 
+            // colCorreo
+            // 
+            this.colCorreo.FieldName = "Correo";
+            this.colCorreo.Name = "colCorreo";
+            // 
+            // colTelefono
+            // 
+            this.colTelefono.FieldName = "Telefono";
+            this.colTelefono.Name = "colTelefono";
+            this.colTelefono.Visible = true;
+            this.colTelefono.VisibleIndex = 1;
+            // 
+            // colEstado1
+            // 
+            this.colEstado1.FieldName = "Estado";
+            this.colEstado1.Name = "colEstado1";
             // 
             // teTotal
             // 
@@ -495,6 +539,11 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // xpCollectionDetalles
+            // 
+            this.xpCollectionDetalles.ObjectType = typeof(FerreteriaApp.bdatosfer.Detalle_compra);
+            this.xpCollectionDetalles.Session = this.unitOfWork1;
+            // 
             // gridView1
             // 
             this.gridView1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 12F);
@@ -524,6 +573,66 @@
             this.gridView1.OptionsView.ShowDetailButtons = false;
             this.gridView1.OptionsView.ShowGroupPanel = false;
             this.gridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.gridView1_KeyDown);
+            // 
+            // colIdDetalleCompra
+            // 
+            this.colIdDetalleCompra.FieldName = "IdDetalleCompra";
+            this.colIdDetalleCompra.Name = "colIdDetalleCompra";
+            // 
+            // gridColumn5
+            // 
+            this.gridColumn5.FieldName = "IdCompra!";
+            this.gridColumn5.Name = "gridColumn5";
+            // 
+            // gridColumn6
+            // 
+            this.gridColumn6.FieldName = "IdCompra!Key";
+            this.gridColumn6.Name = "gridColumn6";
+            // 
+            // gridColumn7
+            // 
+            this.gridColumn7.Caption = "Producto";
+            this.gridColumn7.FieldName = "IdProducto!";
+            this.gridColumn7.Name = "gridColumn7";
+            // 
+            // gridColumn8
+            // 
+            this.gridColumn8.FieldName = "IdProducto!Key";
+            this.gridColumn8.Name = "gridColumn8";
+            // 
+            // colPrecioCompra1
+            // 
+            this.colPrecioCompra1.FieldName = "PrecioCompra";
+            this.colPrecioCompra1.Name = "colPrecioCompra1";
+            this.colPrecioCompra1.Visible = true;
+            this.colPrecioCompra1.VisibleIndex = 1;
+            // 
+            // colPrecioVenta1
+            // 
+            this.colPrecioVenta1.FieldName = "PrecioVenta";
+            this.colPrecioVenta1.Name = "colPrecioVenta1";
+            // 
+            // colCantidad
+            // 
+            this.colCantidad.FieldName = "Cantidad";
+            this.colCantidad.Name = "colCantidad";
+            this.colCantidad.Visible = true;
+            this.colCantidad.VisibleIndex = 2;
+            // 
+            // colMontoTotal
+            // 
+            this.colMontoTotal.FieldName = "MontoTotal";
+            this.colMontoTotal.Name = "colMontoTotal";
+            this.colMontoTotal.Visible = true;
+            this.colMontoTotal.VisibleIndex = 3;
+            // 
+            // gridColumn9
+            // 
+            this.gridColumn9.Caption = "Producto";
+            this.gridColumn9.FieldName = "IdProducto.Nombre";
+            this.gridColumn9.Name = "gridColumn9";
+            this.gridColumn9.Visible = true;
+            this.gridColumn9.VisibleIndex = 0;
             // 
             // sbProcesar
             // 
@@ -588,115 +697,6 @@
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
-            // xpCollectionProductos
-            // 
-            this.xpCollectionProductos.ObjectType = typeof(FerreteriaApp.bdatosfer.Proveedor);
-            this.xpCollectionProductos.Session = this.unitOfWork1;
-            // 
-            // xpCollectionProveedores
-            // 
-            this.xpCollectionProveedores.ObjectType = typeof(FerreteriaApp.bdatosfer.Proveedor);
-            this.xpCollectionProveedores.Session = this.unitOfWork1;
-            // 
-            // xpCollectionDetalles
-            // 
-            this.xpCollectionDetalles.ObjectType = typeof(FerreteriaApp.bdatosfer.Detalle_compra);
-            this.xpCollectionDetalles.Session = this.unitOfWork1;
-            // 
-            // colIdProveedor
-            // 
-            this.colIdProveedor.FieldName = "IdProveedor";
-            this.colIdProveedor.Name = "colIdProveedor";
-            // 
-            // colDocumento
-            // 
-            this.colDocumento.FieldName = "Documento";
-            this.colDocumento.Name = "colDocumento";
-            // 
-            // colRazonSocial
-            // 
-            this.colRazonSocial.FieldName = "RazonSocial";
-            this.colRazonSocial.Name = "colRazonSocial";
-            this.colRazonSocial.Visible = true;
-            this.colRazonSocial.VisibleIndex = 0;
-            // 
-            // colCorreo
-            // 
-            this.colCorreo.FieldName = "Correo";
-            this.colCorreo.Name = "colCorreo";
-            // 
-            // colTelefono
-            // 
-            this.colTelefono.FieldName = "Telefono";
-            this.colTelefono.Name = "colTelefono";
-            this.colTelefono.Visible = true;
-            this.colTelefono.VisibleIndex = 1;
-            // 
-            // colEstado1
-            // 
-            this.colEstado1.FieldName = "Estado";
-            this.colEstado1.Name = "colEstado1";
-            // 
-            // colIdDetalleCompra
-            // 
-            this.colIdDetalleCompra.FieldName = "IdDetalleCompra";
-            this.colIdDetalleCompra.Name = "colIdDetalleCompra";
-            // 
-            // gridColumn5
-            // 
-            this.gridColumn5.FieldName = "IdCompra!";
-            this.gridColumn5.Name = "gridColumn5";
-            // 
-            // gridColumn6
-            // 
-            this.gridColumn6.FieldName = "IdCompra!Key";
-            this.gridColumn6.Name = "gridColumn6";
-            // 
-            // gridColumn7
-            // 
-            this.gridColumn7.Caption = "Producto";
-            this.gridColumn7.FieldName = "IdProducto!";
-            this.gridColumn7.Name = "gridColumn7";
-            // 
-            // gridColumn8
-            // 
-            this.gridColumn8.FieldName = "IdProducto!Key";
-            this.gridColumn8.Name = "gridColumn8";
-            // 
-            // colPrecioCompra1
-            // 
-            this.colPrecioCompra1.FieldName = "PrecioCompra";
-            this.colPrecioCompra1.Name = "colPrecioCompra1";
-            this.colPrecioCompra1.Visible = true;
-            this.colPrecioCompra1.VisibleIndex = 1;
-            // 
-            // colPrecioVenta1
-            // 
-            this.colPrecioVenta1.FieldName = "PrecioVenta";
-            this.colPrecioVenta1.Name = "colPrecioVenta1";
-            // 
-            // colCantidad
-            // 
-            this.colCantidad.FieldName = "Cantidad";
-            this.colCantidad.Name = "colCantidad";
-            this.colCantidad.Visible = true;
-            this.colCantidad.VisibleIndex = 2;
-            // 
-            // colMontoTotal
-            // 
-            this.colMontoTotal.FieldName = "MontoTotal";
-            this.colMontoTotal.Name = "colMontoTotal";
-            this.colMontoTotal.Visible = true;
-            this.colMontoTotal.VisibleIndex = 3;
-            // 
-            // gridColumn9
-            // 
-            this.gridColumn9.Caption = "Producto";
-            this.gridColumn9.FieldName = "IdProducto.Nombre";
-            this.gridColumn9.Name = "gridColumn9";
-            this.gridColumn9.Visible = true;
-            this.gridColumn9.VisibleIndex = 0;
-            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -712,6 +712,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.slueProductos.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).EndInit();
@@ -725,6 +727,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
             this.layoutControl3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.slueProveedores.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProveedores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teTotal.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
@@ -733,15 +736,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProveedores)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionDetalles)).EndInit();
             this.ResumeLayout(false);
 
         }
