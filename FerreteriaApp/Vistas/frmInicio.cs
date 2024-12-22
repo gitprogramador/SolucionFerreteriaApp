@@ -11,6 +11,11 @@ namespace FerreteriaApp.Vistas
 {
     public partial class frmInicio : MetroFramework.Forms.MetroForm
     {
+        #region "Variables"
+        Usuario IdUsuario;
+        string NombreCompleto;
+        Rol Rol;
+        #endregion
         public frmInicio(string nombreCompleto, Rol rol, Usuario idUsuario)
         {
             InitializeComponent();
@@ -19,11 +24,6 @@ namespace FerreteriaApp.Vistas
             tsslNombre.Text = "Bienvenido - " + nombreCompleto + " - " + rol.Descripcion;
             IdUsuario = idUsuario;
         }
-        #region "Variables"
-        Usuario IdUsuario;
-        string NombreCompleto;
-        Rol Rol;
-        #endregion
         #region "Botones de Respaldo y Restauracion"
         private void respaldarBDToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -231,7 +231,9 @@ namespace FerreteriaApp.Vistas
         #endregion
 
         #region Permisos
-        private void BotonesMenuStrip(bool usuarios,bool clientes,bool proveedores,bool categorias,bool productos,bool compras,bool ventas,bool operaciones,bool reportes)
+        private void BotonesMenuStrip(bool usuarios,
+            bool clientes,bool proveedores,bool categorias,bool productos,
+            bool compras,bool ventas,bool operaciones,bool reportes)
         {
             usuariosToolStripMenuItem.Visible = usuarios;
             usuariosToolStripMenuItem.Enabled = usuarios;
