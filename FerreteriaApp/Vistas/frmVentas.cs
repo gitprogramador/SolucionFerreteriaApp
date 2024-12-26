@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data.Filtering;
+using DevExpress.Xpo;
 using DevExpress.XtraEditors;
 using FerreteriaApp.bdatosfer;
 using System;
@@ -10,14 +11,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace FerreteriaApp.Vistas
 {
     public partial class frmVentas : MetroFramework.Forms.MetroForm
     {
         List<Detalle_venta> detalle;
-        Usuario IdUsuario;
-        public frmVentas(Usuario idUsuario)
+        private int IdUsuario;
+        public frmVentas(int idUsuario)
         {
             InitializeComponent();
             CargarClientes();
@@ -317,11 +319,13 @@ namespace FerreteriaApp.Vistas
                     MessageBox.Show("El monto de pago no es suficiente para cubrir el total.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                // Buscar el usuario en la colección
+                var usuario = xpCollection1.OfType<Usuario>()
+                    .FirstOrDefault(u => u.IdUsuario == IdUsuario);
                 // Crear la instancia de la venta
                 Venta v = new Venta(unitOfWork1)
                 {
-                    IdUsuario = IdUsuario,
+                    IdUsuario = usuario,
                     IdCliente = slueCliente.EditValue as Cliente,
                     MontoPago = montoPago,
                     MontoCambio = Convert.ToDecimal(teCambio.Text),

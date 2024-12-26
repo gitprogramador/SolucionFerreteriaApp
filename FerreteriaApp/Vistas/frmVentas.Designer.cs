@@ -92,6 +92,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -131,6 +132,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -746,6 +748,11 @@
             this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem11.TextVisible = false;
             // 
+            // xpCollection1
+            // 
+            this.xpCollection1.ObjectType = typeof(FerreteriaApp.bdatosfer.Usuario);
+            this.xpCollection1.Session = this.unitOfWork1;
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -797,6 +804,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -866,5 +874,6 @@
         private DevExpress.XtraGrid.Columns.GridColumn colPrecioVenta1;
         private DevExpress.XtraGrid.Columns.GridColumn colCantidad;
         private DevExpress.XtraGrid.Columns.GridColumn colSubTotal;
+        private DevExpress.Xpo.XPCollection xpCollection1;
     }
 }

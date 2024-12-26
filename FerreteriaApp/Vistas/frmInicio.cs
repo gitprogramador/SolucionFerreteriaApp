@@ -126,13 +126,13 @@ namespace FerreteriaApp.Vistas
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCompras frm = new frmCompras(IdUsuario);
+            frmCompras frm = new frmCompras(IdUsuario.IdUsuario);
             frm.ShowDialog();
         }
 
         private void ventaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmVentas frm = new frmVentas(IdUsuario);
+            frmVentas frm = new frmVentas(IdUsuario.IdUsuario);
             frm.ShowDialog();
         }
 

@@ -1,5 +1,6 @@
 ﻿using DevExpress.Data.Filtering;
 using DevExpress.Utils.Extensions;
+using DevExpress.Xpo;
 using DevExpress.XtraEditors;
 using FerreteriaApp.bdatosfer;
 using System;
@@ -17,8 +18,8 @@ namespace FerreteriaApp.Vistas
     public partial class frmCompras : MetroFramework.Forms.MetroForm
     {
         List<Detalle_compra> detalle;
-        Usuario user;
-        public frmCompras(Usuario user)
+        private int user;
+        public frmCompras(int user)
         {
             InitializeComponent();
             this.detalle = new List<Detalle_compra>();
@@ -233,11 +234,13 @@ namespace FerreteriaApp.Vistas
                     MessageBox.Show("El monto de pago debe ser un valor numérico mayor que 0.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
-
+                // Buscar el usuario en la colección
+                var usuario = xpCollection1.OfType<Usuario>()
+                    .FirstOrDefault(u => u.IdUsuario == user);
                 // Crear la instancia de la venta
                 Compra v = new Compra(unitOfWork1)
                 {
-                    IdUsuario = user,
+                    IdUsuario = usuario,
                     IdProveedor = slueProveedores.EditValue as Proveedor,
                     MontoTotal = total,
                 };
