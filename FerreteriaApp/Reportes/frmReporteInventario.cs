@@ -23,6 +23,7 @@ namespace FerreteriaApp.Reportes
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
+            gridControl1.DataSource = null;
             CargarReporteInventario();
         }
         private void CargarReporteInventario()
@@ -41,5 +42,9 @@ namespace FerreteriaApp.Reportes
             }
         }
 
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            gridControl1.ShowRibbonPrintPreview();
+        }
     }
 }

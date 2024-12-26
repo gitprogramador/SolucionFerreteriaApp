@@ -30,7 +30,7 @@ CREATE TABLE `categoria` (
   `Estado` tinyint NOT NULL DEFAULT '1',
   `FechaRegistro` datetime DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`IdCategoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -225,7 +225,7 @@ CREATE TABLE `producto` (
 
 LOCK TABLES `producto` WRITE;
 /*!40000 ALTER TABLE `producto` DISABLE KEYS */;
-INSERT INTO `producto` VALUES (31,'PROD001','Martillo de Uña','Martillo de acero con mango de madera',1,50,5.00,8.00,0,'2024-12-13 23:08:10',8),(32,'PROD002','Destornillador Plano','Destornillador de punta plana',2,100,2.50,4.00,1,'2024-12-13 23:08:10',8),(33,'PROD003','Llave Inglesa','Llave ajustable de 8 pulgadas',3,30,10.00,15.00,1,'2024-12-13 23:08:10',8),(34,'PROD004','Taladro Eléctrico','Taladro de 500W con brocas incluidas',4,20,50.00,75.00,1,'2024-12-13 23:08:10',18),(35,'PROD005','Cinta Métrica','Cinta métrica de 5 metros',5,70,3.00,5.00,1,'2024-12-13 23:08:10',1),(36,'PROD006','Sierra Manual','Sierra de mano para madera',6,40,8.00,12.00,1,'2024-12-13 23:08:10',8),(37,'PROD007','Tornillos 1 pulgada','Paquete de 100 tornillos de acero',7,150,3.50,5.50,1,'2024-12-13 23:08:10',9),(38,'PROD008','Clavos de 2 pulgadas','Paquete de 200 clavos galvanizados',7,200,4.00,6.50,1,'2024-12-13 23:08:10',9),(39,'PROD009','Pegamento Epóxico','Resina epóxica de 50 ml',8,60,2.00,3.50,1,'2024-12-13 23:08:10',5),(40,'PROD010','Pintura Blanca','Galón de pintura blanca mate',9,25,12.00,18.00,1,'2024-12-13 23:08:10',12),(41,'PROD011','Brocha 2 pulgadas','Brocha para pintar superficies lisas',9,80,1.50,3.00,1,'2024-12-13 23:08:10',8),(42,'PROD012','Rodillo de Pintura','Rodillo para pintura de paredes',9,50,4.00,6.50,1,'2024-12-13 23:08:10',8),(43,'PROD013','Cemento Portland','Bolsa de cemento de 50 kg',10,100,6.00,10.00,1,'2024-12-13 23:08:10',6),(44,'PROD014','Arena Fina','Metro cúbico de arena fina',10,20,15.00,25.00,1,'2024-12-13 23:08:10',14),(45,'PROD015','Tubería PVC 1 pulgada','Tubería de PVC para agua',11,60,1.20,2.00,1,'2024-12-13 23:08:10',1),(46,'PROD016','Codo PVC 90°','Codo de PVC para unión de tuberías',11,100,0.50,1.00,1,'2024-12-13 23:08:10',8),(47,'PROD017','Lija Grano Fino','Hoja de lija de 200 granos',12,200,0.30,0.60,1,'2024-12-13 23:08:10',8),(48,'PROD018','Masilla Plástica','Bote de masilla para reparación',12,50,3.00,5.00,1,'2024-12-13 23:08:10',5),(49,'PROD019','Cerradura de Puerta','Cerradura con llave y perilla',13,30,12.00,20.00,1,'2024-12-13 23:08:10',8),(50,'PROD020','Bisagra de Acero','Juego de bisagras para puertas',13,70,2.50,4.50,1,'2024-12-13 23:08:10',8),(51,'PROD021','Cable Eléctrico 2x16','Rollo de 100 metros',14,10,25.00,35.00,1,'2024-12-13 23:08:10',1),(52,'PROD022','Interruptor Unipolar','Interruptor eléctrico de pared',14,80,1.50,2.50,1,'2024-12-13 23:08:10',8),(53,'PROD023','Bombillo LED 9W','Bombillo LED de luz blanca',15,100,2.00,3.50,1,'2024-12-13 23:08:10',8),(54,'PROD024','Extensión Eléctrica','Extensión de 5 metros',15,50,6.00,10.00,1,'2024-12-13 23:08:10',1),(55,'PROD025','Guantes de Trabajo','Guantes de seguridad talla M',16,60,2.50,4.00,1,'2024-12-13 23:08:10',8),(56,'PROD026','Casco de Seguridad','Casco de seguridad para construcción',16,20,8.00,12.00,1,'2024-12-13 23:08:10',8),(57,'PROD027','Mascarilla Antipolvo','Paquete de 10 mascarillas',16,100,1.50,3.00,1,'2024-12-13 23:08:10',8),(58,'PROD028','Escalera de Aluminio','Escalera de 6 peldaños',17,15,35.00,50.00,1,'2024-12-13 23:08:10',1),(59,'PROD029','Carretilla','Carretilla metálica reforzada',17,5,40.00,65.00,1,'2024-12-13 23:08:10',1),(60,'PROD030','Nivel de Burbuja','Nivel de burbuja de 60 cm',18,30,6.00,9.00,1,'2024-12-13 23:08:10',8);
+INSERT INTO `producto` VALUES (31,'PROD001','Martillo de Uña','Martillo de acero con mango de madera',1,50,5.00,8.00,1,'2024-12-13 23:08:10',8),(32,'PROD002','Destornillador Plano','Destornillador de punta plana',2,100,2.50,4.00,1,'2024-12-13 23:08:10',8),(33,'PROD003','Llave Inglesa','Llave ajustable de 8 pulgadas',3,30,10.00,15.00,1,'2024-12-13 23:08:10',8),(34,'PROD004','Taladro Eléctrico','Taladro de 500W con brocas incluidas',4,20,50.00,75.00,1,'2024-12-13 23:08:10',18),(35,'PROD005','Cinta Métrica','Cinta métrica de 5 metros',5,70,3.00,5.00,1,'2024-12-13 23:08:10',1),(36,'PROD006','Sierra Manual','Sierra de mano para madera',6,40,8.00,12.00,1,'2024-12-13 23:08:10',8),(37,'PROD007','Tornillos 1 pulgada','Paquete de 100 tornillos de acero',7,150,3.50,5.50,1,'2024-12-13 23:08:10',9),(38,'PROD008','Clavos de 2 pulgadas','Paquete de 200 clavos galvanizados',7,200,4.00,6.50,1,'2024-12-13 23:08:10',9),(39,'PROD009','Pegamento Epóxico','Resina epóxica de 50 ml',8,60,2.00,3.50,1,'2024-12-13 23:08:10',5),(40,'PROD010','Pintura Blanca','Galón de pintura blanca mate',9,25,12.00,18.00,1,'2024-12-13 23:08:10',12),(41,'PROD011','Brocha 2 pulgadas','Brocha para pintar superficies lisas',9,80,1.50,3.00,1,'2024-12-13 23:08:10',8),(42,'PROD012','Rodillo de Pintura','Rodillo para pintura de paredes',9,50,4.00,6.50,1,'2024-12-13 23:08:10',8),(43,'PROD013','Cemento Portland','Bolsa de cemento de 50 kg',10,100,6.00,10.00,1,'2024-12-13 23:08:10',6),(44,'PROD014','Arena Fina','Metro cúbico de arena fina',10,20,15.00,25.00,1,'2024-12-13 23:08:10',14),(45,'PROD015','Tubería PVC 1 pulgada','Tubería de PVC para agua',11,60,1.20,2.00,1,'2024-12-13 23:08:10',1),(46,'PROD016','Codo PVC 90°','Codo de PVC para unión de tuberías',11,100,0.50,1.00,1,'2024-12-13 23:08:10',8),(47,'PROD017','Lija Grano Fino','Hoja de lija de 200 granos',12,200,0.30,0.60,1,'2024-12-13 23:08:10',8),(48,'PROD018','Masilla Plástica','Bote de masilla para reparación',12,50,3.00,5.00,1,'2024-12-13 23:08:10',5),(49,'PROD019','Cerradura de Puerta','Cerradura con llave y perilla',13,30,12.00,20.00,1,'2024-12-13 23:08:10',8),(50,'PROD020','Bisagra de Acero','Juego de bisagras para puertas',13,70,2.50,4.50,1,'2024-12-13 23:08:10',8),(51,'PROD021','Cable Eléctrico 2x16','Rollo de 100 metros',14,10,25.00,35.00,1,'2024-12-13 23:08:10',1),(52,'PROD022','Interruptor Unipolar','Interruptor eléctrico de pared',14,80,1.50,2.50,1,'2024-12-13 23:08:10',8),(53,'PROD023','Bombillo LED 9W','Bombillo LED de luz blanca',15,100,2.00,3.50,1,'2024-12-13 23:08:10',8),(54,'PROD024','Extensión Eléctrica','Extensión de 5 metros',15,50,6.00,10.00,1,'2024-12-13 23:08:10',1),(55,'PROD025','Guantes de Trabajo','Guantes de seguridad talla M',16,60,2.50,4.00,1,'2024-12-13 23:08:10',8),(56,'PROD026','Casco de Seguridad','Casco de seguridad para construcción',16,20,8.00,12.00,1,'2024-12-13 23:08:10',8),(57,'PROD027','Mascarilla Antipolvo','Paquete de 10 mascarillas',16,100,1.50,3.00,1,'2024-12-13 23:08:10',8),(58,'PROD028','Escalera de Aluminio','Escalera de 6 peldaños',17,15,35.00,50.00,1,'2024-12-13 23:08:10',1),(59,'PROD029','Carretilla','Carretilla metálica reforzada',17,5,40.00,65.00,1,'2024-12-13 23:08:10',1),(60,'PROD030','Nivel de Burbuja','Nivel de burbuja de 60 cm',18,30,6.00,9.00,1,'2024-12-13 23:08:10',8);
 /*!40000 ALTER TABLE `producto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +312,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (3,'Biarny Salinas','superadmin','$2a$11$1GcBoAHifpXPNN6stvoaK.U3EBZh3iMxPTcQsBG.K1koHlDekeFjG',4,1,'2024-12-12 23:13:15'),(5,'admin principal','admin','$2a$11$B2NoEqzDwrZculwrv9SZm.Zleq13lb4WQtb73VMhV2J4fj7CA9QFa',1,1,'2024-12-13 15:08:16'),(9,'Rodrigo Fanor','vendedor1','$2a$11$k5ZLgHe0J1nhjI0KbflYLuozFj4EYyEHn6pxQBFpWvWl9cmyaJ2Aa',2,1,'2024-12-16 22:33:29'),(10,'Elena Muñoz','consulta1','$2a$11$L6I.nXUFKv.Grf84ZFRAcOA/89K/aZ/vQ2XJzWxw826d93FMhU9AS',3,1,'2024-12-16 22:33:56');
+INSERT INTO `usuario` VALUES (3,'Biarny Salinas','superadmin','$2a$11$1GcBoAHifpXPNN6stvoaK.U3EBZh3iMxPTcQsBG.K1koHlDekeFjG',4,1,'2024-12-12 23:13:15'),(5,'admin principal','admin','$2a$11$B2NoEqzDwrZculwrv9SZm.Zleq13lb4WQtb73VMhV2J4fj7CA9QFa',1,1,'2024-12-13 15:08:16'),(9,'Rodrigo Fanor','vendedor1','$2a$11$k5ZLgHe0J1nhjI0KbflYLuozFj4EYyEHn6pxQBFpWvWl9cmyaJ2Aa',2,1,'2024-12-16 22:33:29'),(10,'Elena Muñoz','consulta','$2a$11$L6I.nXUFKv.Grf84ZFRAcOA/89K/aZ/vQ2XJzWxw826d93FMhU9AS',3,1,'2024-12-16 22:33:56');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -505,18 +505,21 @@ DELIMITER ;;
 CREATE DEFINER=`root`@`localhost` PROCEDURE `ReporteInventario`()
 BEGIN
     SELECT 
-        IdProducto AS `ID del Producto`,
-        Descripcion AS `Descripción`,
-        Stock AS `Cantidad Disponible`,
-        PrecioCompra AS `Precio de Compra`,
-        PrecioVenta AS `Precio de Venta`,
+        p.IdProducto AS `ID del Producto`,
+        c.Descripcion AS `Categoria`,
+        p.Descripcion AS `Producto`,
+        p.Stock AS `Cantidad Disponible`,
+        p.PrecioCompra AS `Precio de Compra`,
+        p.PrecioVenta AS `Precio de Venta`,
         (PrecioVenta - PrecioCompra) AS `Margen de Ganancia`
     FROM 
-        producto
+        producto p 
+        inner join 
+        categoria c on p.IdCategoria=c.IdCategoria
     WHERE 
-        Estado = 1 
+        p.Estado = 1 
     ORDER BY 
-        Descripcion ASC; 
+        p.Descripcion ASC; 
 END ;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -658,4 +661,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-21 18:58:39
+-- Dump completed on 2024-12-26 16:19:21

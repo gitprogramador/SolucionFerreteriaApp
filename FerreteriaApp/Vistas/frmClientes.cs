@@ -49,7 +49,7 @@ namespace FerreteriaApp.Vistas
         private void sbNuevo_Click(object sender, EventArgs e)
         {
             Limpiar();
-            Botones(false, true, false, false, false, true, false);
+            Botones(false, true, false, false, true, true, false);
         }
 
         private void sbCancelar_Click(object sender, EventArgs e)

@@ -64,6 +64,7 @@
             this.metroButton2.TabIndex = 1;
             this.metroButton2.Text = "Exportar";
             this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroButton1
             // 
@@ -131,6 +132,7 @@
             this.Name = "frmReporteInventario";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Inventario";
+            this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
