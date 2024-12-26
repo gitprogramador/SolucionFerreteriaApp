@@ -32,7 +32,6 @@ namespace FerreteriaApp.Vistas
             xpCollection1.Reload();
         }
 
-
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             string username = teUsername.Text.Trim();
@@ -47,7 +46,7 @@ namespace FerreteriaApp.Vistas
             }
 
             // Buscar el usuario en la colección
-            var usuarioValido = xpCollection1.OfType<Usuario>()
+            Usuario usuarioValido = xpCollection1.OfType<Usuario>()
                 .FirstOrDefault(u => u.Username == username);
 
             // Si el usuario no existe
