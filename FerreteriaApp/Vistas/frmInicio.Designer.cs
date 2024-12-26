@@ -361,7 +361,7 @@
             this.Text = "DASHBOARD";
             this.TextAlign = MetroFramework.Forms.MetroFormTextAlign.Center;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmInicio_FormClosed);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmInicio_FormClosing);
             this.Load += new System.EventHandler(this.frmInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

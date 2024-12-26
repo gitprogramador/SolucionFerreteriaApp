@@ -281,13 +281,7 @@ namespace FerreteriaApp.Vistas
         private void frmInicio_FormClosed(object sender, FormClosedEventArgs e)
         {
             
-            DialogResult userAnswer = MessageBox.Show("¿Desea Salir?", "Información",
-          MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (userAnswer == DialogResult.Yes)
-            {
-                this.Close();
-            }
+            
         }
 
         private void frmInicio_Load(object sender, EventArgs e)
@@ -331,6 +325,17 @@ namespace FerreteriaApp.Vistas
         {
             frmVentasDia frm =new frmVentasDia();
             frm.ShowDialog();
+        }
+
+        private void frmInicio_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult userAnswer = MessageBox.Show("¿Desea salir?", "Información",
+         MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (userAnswer == DialogResult.No)
+            {
+                e.Cancel = true; // Cancela el cierre del formulario
+            }
         }
     }
 }
