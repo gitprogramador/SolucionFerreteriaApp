@@ -15,7 +15,7 @@ namespace FerreteriaApp.DatosReportes
         private string Server { get; set; } = "localhost";
         private string Database { get; set; } = "bdatosfer";
         private string User { get; set; } = "root";
-        private string Password { get; set; } = "12345";
+        private string Password { get; set; } = "root";
 
         // Método para ejecutar el procedimiento almacenado y obtener los datos
         public DataTable ObtenerVentasDelDia()

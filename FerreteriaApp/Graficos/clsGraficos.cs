@@ -14,7 +14,7 @@ namespace FerreteriaApp.Graficos
     {
         private string Server = "localhost";
         private string User = "root";
-        private string Pass = "12345";
+        private string Pass = "root";
         private string Bd = "bdatosfer";
         public DataTable GetProductosStockBajo()
         {

@@ -14,7 +14,7 @@ namespace FerreteriaApp.Gestion_BD
     {
         private string server = "localhost";         // Dirección del servidor MySQL
         private string user = "root";         // Nombre de usuario para la base de datos
-        private string password = "12345"; // Contraseña del usuario
+        private string password = "root"; // Contraseña del usuario
         private string database = "bdatosfer";      // Nombre de la base de datos
 
         // Ruta del ejecutable de MySQL y mysqldump
