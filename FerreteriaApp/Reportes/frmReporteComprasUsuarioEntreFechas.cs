@@ -92,13 +92,7 @@ namespace FerreteriaApp.Reportes
 
         private void mbExportar_Click(object sender, EventArgs e)
         {
-<<<<<<< Updated upstream
             gridControl1.ShowRibbonPrintPreview();
-
-=======
-
-            gridControl1.ShowRibbonPrintPreview();
->>>>>>> Stashed changes
         }
     }
 }
