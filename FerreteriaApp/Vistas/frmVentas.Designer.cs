@@ -70,11 +70,13 @@
             this.tePago = new DevExpress.XtraEditors.TextEdit();
             this.teCambio = new DevExpress.XtraEditors.TextEdit();
             this.teTotal = new DevExpress.XtraEditors.TextEdit();
+            this.btnAddCliente = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.xpCollectionDetalles = new DevExpress.Xpo.XPCollection(this.components);
@@ -94,9 +96,9 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
-            this.btnAddCliente = new DevExpress.XtraEditors.SimpleButton();
-            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xpCollectionRoles = new DevExpress.Xpo.XPCollection(this.components);
+            this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -127,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -137,8 +140,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionRoles)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -529,6 +532,17 @@
             this.teTotal.StyleController = this.layoutControl3;
             this.teTotal.TabIndex = 7;
             // 
+            // btnAddCliente
+            // 
+            this.btnAddCliente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnAddCliente.ImageOptions.Image")));
+            this.btnAddCliente.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnAddCliente.Location = new System.Drawing.Point(682, 12);
+            this.btnAddCliente.Name = "btnAddCliente";
+            this.btnAddCliente.Size = new System.Drawing.Size(62, 22);
+            this.btnAddCliente.StyleController = this.layoutControl3;
+            this.btnAddCliente.TabIndex = 8;
+            this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
+            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -587,11 +601,21 @@
             this.layoutControlItem6.Text = "Monto Total";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(103, 19);
             // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.btnAddCliente;
+            this.layoutControlItem12.Location = new System.Drawing.Point(670, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(66, 30);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
+            // 
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.sbProcesar);
             this.layoutControl1.Controls.Add(this.sbCancelar);
+            this.layoutControl1.Controls.Add(this.btnImprimir);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(20, 354);
             this.layoutControl1.Name = "layoutControl1";
@@ -606,7 +630,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 40);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(736, 274);
+            this.gridControl1.Size = new System.Drawing.Size(736, 248);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -724,7 +748,8 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem10,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem13});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(760, 326);
             this.Root.TextVisible = false;
@@ -734,7 +759,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(740, 278);
+            this.layoutControlItem1.Size = new System.Drawing.Size(740, 252);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -761,30 +786,29 @@
             this.xpCollection1.ObjectType = typeof(FerreteriaApp.bdatosfer.Usuario);
             this.xpCollection1.Session = this.unitOfWork1;
             // 
-            // btnAddCliente
-            // 
-            this.btnAddCliente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnAddCliente.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnAddCliente.Location = new System.Drawing.Point(682, 12);
-            this.btnAddCliente.Name = "btnAddCliente";
-            this.btnAddCliente.Size = new System.Drawing.Size(62, 22);
-            this.btnAddCliente.StyleController = this.layoutControl3;
-            this.btnAddCliente.TabIndex = 8;
-            this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
-            // 
-            // layoutControlItem12
-            // 
-            this.layoutControlItem12.Control = this.btnAddCliente;
-            this.layoutControlItem12.Location = new System.Drawing.Point(670, 0);
-            this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(66, 30);
-            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem12.TextVisible = false;
-            // 
             // xpCollectionRoles
             // 
             this.xpCollectionRoles.ObjectType = typeof(FerreteriaApp.bdatosfer.Rol);
             this.xpCollectionRoles.Session = this.unitOfWork1;
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(12, 292);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(736, 22);
+            this.btnImprimir.StyleController = this.layoutControl1;
+            this.btnImprimir.TabIndex = 7;
+            this.btnImprimir.Text = "IMPRIMIR ULTIMA FACTURA";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // layoutControlItem13
+            // 
+            this.layoutControlItem13.Control = this.btnImprimir;
+            this.layoutControlItem13.Location = new System.Drawing.Point(0, 280);
+            this.layoutControlItem13.Name = "layoutControlItem13";
+            this.layoutControlItem13.Size = new System.Drawing.Size(740, 26);
+            this.layoutControlItem13.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem13.TextVisible = false;
             // 
             // frmVentas
             // 
@@ -828,6 +852,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -838,8 +863,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionRoles)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -913,5 +938,7 @@
         private DevExpress.XtraEditors.SimpleButton btnAddCliente;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.Xpo.XPCollection xpCollectionRoles;
+        private DevExpress.XtraEditors.SimpleButton btnImprimir;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
     }
 }

@@ -90,5 +90,10 @@ namespace FerreteriaApp.Reportes
         {
             CargarGrid();
         }
+
+        private void mbExportar_Click(object sender, EventArgs e)
+        {
+            gridControl1.ShowRibbonPrintPreview();
+        }
     }
 }

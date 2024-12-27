@@ -60,6 +60,7 @@
             this.tsslNombre = new System.Windows.Forms.ToolStripStatusLabel();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.tsmiFacturas = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
@@ -86,12 +87,13 @@
             this.compraToolStripMenuItem,
             this.ventaToolStripMenuItem,
             this.operacionesToolStripMenuItem,
-            this.reportesToolStripMenuItem});
+            this.reportesToolStripMenuItem,
+            this.tsmiFacturas});
             this.menuStrip1.Location = new System.Drawing.Point(20, 60);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0);
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1032, 89);
+            this.menuStrip1.Size = new System.Drawing.Size(1251, 89);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -264,16 +266,16 @@
             this.layoutControl1.Location = new System.Drawing.Point(20, 149);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(1032, 452);
+            this.layoutControl1.Size = new System.Drawing.Size(1251, 434);
             this.layoutControl1.TabIndex = 1;
             this.layoutControl1.Text = "layoutControl1";
             // 
             // chartControl2
             // 
-            this.chartControl2.Location = new System.Drawing.Point(518, 12);
+            this.chartControl2.Location = new System.Drawing.Point(627, 12);
             this.chartControl2.Name = "chartControl2";
             this.chartControl2.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl2.Size = new System.Drawing.Size(502, 428);
+            this.chartControl2.Size = new System.Drawing.Size(612, 410);
             this.chartControl2.TabIndex = 2;
             // 
             // chartControl1
@@ -281,7 +283,7 @@
             this.chartControl1.Location = new System.Drawing.Point(12, 12);
             this.chartControl1.Name = "chartControl1";
             this.chartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[0];
-            this.chartControl1.Size = new System.Drawing.Size(502, 428);
+            this.chartControl1.Size = new System.Drawing.Size(611, 410);
             this.chartControl1.TabIndex = 0;
             // 
             // Root
@@ -292,7 +294,7 @@
             this.layoutControlItem1,
             this.layoutControlItem2});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(1032, 452);
+            this.Root.Size = new System.Drawing.Size(1251, 434);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -300,16 +302,16 @@
             this.layoutControlItem1.Control = this.chartControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(506, 432);
+            this.layoutControlItem1.Size = new System.Drawing.Size(615, 414);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.chartControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(506, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(615, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(506, 432);
+            this.layoutControlItem2.Size = new System.Drawing.Size(616, 414);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem2.TextVisible = false;
             // 
@@ -317,9 +319,9 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsslNombre});
-            this.statusStrip1.Location = new System.Drawing.Point(20, 601);
+            this.statusStrip1.Location = new System.Drawing.Point(20, 583);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1032, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1251, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -346,12 +348,22 @@
             this.imageList1.Images.SetKeyName(6, "pngegg (7).png");
             this.imageList1.Images.SetKeyName(7, "pngegg.png");
             // 
+            // tsmiFacturas
+            // 
+            this.tsmiFacturas.Image = ((System.Drawing.Image)(resources.GetObject("tsmiFacturas.Image")));
+            this.tsmiFacturas.Name = "tsmiFacturas";
+            this.tsmiFacturas.Size = new System.Drawing.Size(97, 89);
+            this.tsmiFacturas.Text = "FACTURAS";
+            this.tsmiFacturas.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.tsmiFacturas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.tsmiFacturas.Click += new System.EventHandler(this.tsmiFacturas_Click);
+            // 
             // frmInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = MetroFramework.Forms.MetroFormBorderStyle.FixedSingle;
-            this.ClientSize = new System.Drawing.Size(1072, 643);
+            this.ClientSize = new System.Drawing.Size(1291, 625);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
@@ -412,5 +424,6 @@
         private System.Windows.Forms.ToolStripMenuItem reporteComptraEntreFechasToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem reporteComprasPorUsuarioEntreFechasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cierreVentasDelDiaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmiFacturas;
     }
 }

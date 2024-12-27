@@ -122,18 +122,24 @@ namespace FerreteriaApp.Vistas
         {
             frmProductos frm = new frmProductos(Rol);
             frm.ShowDialog();
+            CargarChartProductos();
+            CargarChartProductosPorCategoria();
         }
 
         private void compraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCompras frm = new frmCompras(IdUsuario.IdUsuario);
             frm.ShowDialog();
+            CargarChartProductos();
+            CargarChartProductosPorCategoria();
         }
 
         private void ventaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmVentas frm = new frmVentas(IdUsuario.IdUsuario);
             frm.ShowDialog();
+            CargarChartProductos();
+            CargarChartProductosPorCategoria();
         }
 
         #endregion
@@ -336,6 +342,12 @@ namespace FerreteriaApp.Vistas
             {
                 e.Cancel = true; // Cancela el cierre del formulario
             }
+        }
+
+        private void tsmiFacturas_Click(object sender, EventArgs e)
+        {
+            frmFacturas frm = new frmFacturas();
+            frm.ShowDialog();
         }
     }
 }

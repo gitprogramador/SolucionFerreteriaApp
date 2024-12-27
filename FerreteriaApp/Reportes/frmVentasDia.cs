@@ -41,5 +41,10 @@ namespace FerreteriaApp.Reportes
             // Cargar los datos al cargar el formulario
             CargarVentasEnGrid();
         }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            gridControl1.ShowRibbonPrintPreview();
+        }
     }
 }

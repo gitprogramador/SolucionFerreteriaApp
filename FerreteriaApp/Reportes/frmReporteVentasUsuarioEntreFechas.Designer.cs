@@ -181,6 +181,7 @@
             this.mbExportar.TabIndex = 1;
             this.mbExportar.Text = "Exportar";
             this.mbExportar.UseSelectable = true;
+            this.mbExportar.Click += new System.EventHandler(this.mbExportar_Click);
             // 
             // mbObtener
             // 

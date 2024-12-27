@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using FerreteriaApp.bdatosfer;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -215,5 +216,41 @@ namespace FerreteriaApp.DatosReportes
 
             return dt;
         }
+
+
+        // Método para obtener los detalles de una venta específica
+        public DataTable ObtenerDetallesVenta(int idVenta)
+        {
+            DataTable dt = new DataTable();
+            string connectionString = $"Server={Server};Database={Database};Uid={User};Pwd={Password};";
+
+            using (MySqlConnection conn = new MySqlConnection(connectionString))
+            {
+                try
+                {
+                    conn.Open();
+                    using (MySqlCommand cmd = new MySqlCommand("DetallesVenta", conn))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@p_IdVenta", idVenta);
+
+                        // Usamos el adaptador para llenar el DataTable con los resultados del procedimiento almacenado
+                        using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
+                        {
+                            adapter.Fill(dt);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error al obtener los detalles de la venta: " + ex.Message);
+                }
+            }
+
+            return dt;
+        }
+
+
+
     }
 }

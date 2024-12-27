@@ -50,5 +50,11 @@ namespace FerreteriaApp.Reportes
         {
             CargarVentasEnGrid();
         }
+
+        private void mbExportar_Click(object sender, EventArgs e)
+        {
+            gridControl1.ShowRibbonPrintPreview();
+
+        }
     }
 }

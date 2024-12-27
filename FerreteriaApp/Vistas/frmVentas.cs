@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -344,7 +345,7 @@ namespace FerreteriaApp.Vistas
 
                 // Mostrar mensaje de éxito
                 MessageBox.Show("La venta se ha procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ImprimirUltimaFactura();
                 // Limpiar el formulario para una nueva venta
                 Limpiar();
             }
@@ -474,6 +475,95 @@ namespace FerreteriaApp.Vistas
             {
                 MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ImprimirUltimaFactura()
+        {
+            try
+            {
+                // Obtener la última factura agregada
+                var ultimaCompra = unitOfWork1.Query<Venta>()
+                    .OrderByDescending(c => c.IdVenta) // Asegúrate de usar el identificador único o timestamp adecuado
+                    .FirstOrDefault();
+
+                if (ultimaCompra == null)
+                {
+                    MessageBox.Show("No se encontró ninguna factura para imprimir.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
+                // Configurar el texto del ticket
+                StringBuilder ticket = new StringBuilder();
+                ticket.AppendLine($"Fecha: {DateTime.Now:dd/MM/yyyy HH:mm}");
+                ticket.AppendLine($"Cliente:\n {ultimaCompra.IdCliente.NombreCompleto}");
+                ticket.AppendLine($"Atendido por:\n {ultimaCompra.IdUsuario.NombreCompleto}");
+                ticket.AppendLine("------------------");
+                ticket.AppendLine("DETALLE DE VENTA");
+                ticket.AppendLine("------------------");
+
+                foreach (var detalle in ultimaCompra.Detalle_ventas)
+                {
+                    ticket.AppendLine($"{detalle.IdProducto.Nombre}");
+                    ticket.AppendLine($"  Cantidad: {detalle.Cantidad} x {detalle.PrecioVenta:C}");
+                    ticket.AppendLine($"  Subtotal: {(detalle.Cantidad * detalle.PrecioVenta):C}");
+                }
+
+                ticket.AppendLine("------------------");
+                ticket.AppendLine($"TOTAL: {ultimaCompra.MontoTotal:C}");
+                ticket.AppendLine("------------------");
+                ticket.AppendLine("Gracias por su compra!");
+                ticket.AppendLine("******************");
+
+                // Imprimir el ticket
+                ImprimirTicket(ticket.ToString());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error al imprimir el ticket: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ImprimirTicket(string textoTicket)
+        {
+            try
+            {
+                PrintDocument printDoc = new PrintDocument();
+
+                // Asignar la fecha y hora actual como nombre del documento
+                string fecha = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss"); // Formato: Año-Mes-Día_Hora-Minuto-Segundo
+                printDoc.DocumentName = $"Ticket_{fecha}";
+
+                printDoc.PrintPage += (sender, e) =>
+                {
+                    // Dibujar el texto del ticket
+                    e.Graphics.DrawString(textoTicket, new Font("Courier New", 10), Brushes.Black, new PointF(0, 0));
+                };
+
+                // Configurar el tamaño de papel (ticket)
+                PaperSize tamañoTicket = new PaperSize("Ticket", 280, 600); // Ajusta el tamaño según tus necesidades
+                printDoc.DefaultPageSettings.PaperSize = tamañoTicket;
+
+                // Mostrar el diálogo de impresión
+                PrintDialog printDialog = new PrintDialog
+                {
+                    Document = printDoc,
+                    UseEXDialog = true // Habilitar opciones avanzadas (como seleccionar impresora virtual)
+                };
+
+                if (printDialog.ShowDialog() == DialogResult.OK)
+                {
+                    printDoc.Print(); // Imprimir o guardar como PDF
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al imprimir: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            ImprimirUltimaFactura();
         }
     }
 }

@@ -50,11 +50,13 @@
             this.tePrecioCompra = new DevExpress.XtraEditors.TextEdit();
             this.teCantidad = new DevExpress.XtraEditors.TextEdit();
             this.sbAgregarProducto = new DevExpress.XtraEditors.SimpleButton();
+            this.tePrecioVenta = new DevExpress.XtraEditors.TextEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl3 = new DevExpress.XtraLayout.LayoutControl();
             this.slueProveedores = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -91,8 +93,8 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
-            this.tePrecioVenta = new DevExpress.XtraEditors.TextEdit();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnImprimir = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -103,11 +105,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrecioCompra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
             this.panelControl2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).BeginInit();
@@ -129,8 +133,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -320,6 +323,19 @@
             this.sbAgregarProducto.Text = "Agregar";
             this.sbAgregarProducto.Click += new System.EventHandler(this.sbAgregarProducto_Click);
             // 
+            // tePrecioVenta
+            // 
+            this.tePrecioVenta.Location = new System.Drawing.Point(105, 72);
+            this.tePrecioVenta.Name = "tePrecioVenta";
+            this.tePrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tePrecioVenta.Properties.Appearance.Options.UseFont = true;
+            this.tePrecioVenta.Properties.Appearance.Options.UseTextOptions = true;
+            this.tePrecioVenta.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tePrecioVenta.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.tePrecioVenta.Size = new System.Drawing.Size(448, 26);
+            this.tePrecioVenta.StyleController = this.layoutControl2;
+            this.tePrecioVenta.TabIndex = 5;
+            // 
             // layoutControlGroup1
             // 
             this.layoutControlGroup1.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -381,6 +397,21 @@
             this.layoutControlItem9.Size = new System.Drawing.Size(545, 38);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.tePrecioVenta;
+            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem4.CustomizationFormText = "Precio Compra";
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(545, 30);
+            this.layoutControlItem4.Text = "Precio Venta";
+            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 19);
+            this.layoutControlItem4.TextToControlDistance = 5;
             // 
             // panelControl2
             // 
@@ -528,6 +559,7 @@
             this.layoutControl1.Controls.Add(this.gridControl1);
             this.layoutControl1.Controls.Add(this.sbProcesar);
             this.layoutControl1.Controls.Add(this.sbCancelar);
+            this.layoutControl1.Controls.Add(this.btnImprimir);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl1.Location = new System.Drawing.Point(20, 334);
             this.layoutControl1.Name = "layoutControl1";
@@ -542,7 +574,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 40);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(545, 323);
+            this.gridControl1.Size = new System.Drawing.Size(545, 297);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -677,7 +709,8 @@
             this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem10,
-            this.layoutControlItem11});
+            this.layoutControlItem11,
+            this.layoutControlItem5});
             this.Root.Name = "Root";
             this.Root.Size = new System.Drawing.Size(569, 375);
             this.Root.TextVisible = false;
@@ -687,7 +720,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(549, 327);
+            this.layoutControlItem1.Size = new System.Drawing.Size(549, 301);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -714,33 +747,24 @@
             this.xpCollection1.ObjectType = typeof(FerreteriaApp.bdatosfer.Usuario);
             this.xpCollection1.Session = this.unitOfWork1;
             // 
-            // tePrecioVenta
+            // btnImprimir
             // 
-            this.tePrecioVenta.Location = new System.Drawing.Point(105, 72);
-            this.tePrecioVenta.Name = "tePrecioVenta";
-            this.tePrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tePrecioVenta.Properties.Appearance.Options.UseFont = true;
-            this.tePrecioVenta.Properties.Appearance.Options.UseTextOptions = true;
-            this.tePrecioVenta.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tePrecioVenta.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.tePrecioVenta.Size = new System.Drawing.Size(448, 26);
-            this.tePrecioVenta.StyleController = this.layoutControl2;
-            this.tePrecioVenta.TabIndex = 5;
+            this.btnImprimir.Location = new System.Drawing.Point(12, 341);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(545, 22);
+            this.btnImprimir.StyleController = this.layoutControl1;
+            this.btnImprimir.TabIndex = 7;
+            this.btnImprimir.Text = "Imprimir Ultima Factura";
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // layoutControlItem4
+            // layoutControlItem5
             // 
-            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem4.Control = this.tePrecioVenta;
-            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.layoutControlItem4.CustomizationFormText = "Precio Compra";
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 60);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(545, 30);
-            this.layoutControlItem4.Text = "Precio Venta";
-            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 19);
-            this.layoutControlItem4.TextToControlDistance = 5;
+            this.layoutControlItem5.Control = this.btnImprimir;
+            this.layoutControlItem5.Location = new System.Drawing.Point(0, 329);
+            this.layoutControlItem5.Name = "layoutControlItem5";
+            this.layoutControlItem5.Size = new System.Drawing.Size(549, 26);
+            this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem5.TextVisible = false;
             // 
             // frmCompras
             // 
@@ -762,11 +786,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tePrecioCompra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
             this.panelControl2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl3)).EndInit();
@@ -788,8 +814,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -860,5 +885,7 @@
         private DevExpress.Xpo.XPCollection xpCollection1;
         private DevExpress.XtraEditors.TextEdit tePrecioVenta;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
+        private DevExpress.XtraEditors.SimpleButton btnImprimir;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
     }
 }

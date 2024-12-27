@@ -30,6 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.mcbUsuarios = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.mdtFinal = new MetroFramework.Controls.MetroDateTime();
+            this.mdtInicial = new MetroFramework.Controls.MetroDateTime();
             this.mbExportar = new MetroFramework.Controls.MetroButton();
             this.mbObtener = new MetroFramework.Controls.MetroButton();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
@@ -37,12 +43,6 @@
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.mdtInicial = new MetroFramework.Controls.MetroDateTime();
-            this.mdtFinal = new MetroFramework.Controls.MetroDateTime();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.mcbUsuarios = new MetroFramework.Controls.MetroComboBox();
             this.unitOfWork1 = new DevExpress.Xpo.UnitOfWork(this.components);
             this.xpCollectionUsuarios = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -73,6 +73,61 @@
             this.panelControl1.Size = new System.Drawing.Size(809, 90);
             this.panelControl1.TabIndex = 6;
             // 
+            // mcbUsuarios
+            // 
+            this.mcbUsuarios.FormattingEnabled = true;
+            this.mcbUsuarios.ItemHeight = 23;
+            this.mcbUsuarios.Location = new System.Drawing.Point(276, 37);
+            this.mcbUsuarios.Name = "mcbUsuarios";
+            this.mcbUsuarios.Size = new System.Drawing.Size(121, 29);
+            this.mcbUsuarios.TabIndex = 4;
+            this.mcbUsuarios.UseSelectable = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(307, 15);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(53, 19);
+            this.metroLabel3.TabIndex = 3;
+            this.metroLabel3.Text = "Usuario";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(163, 15);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel2.TabIndex = 3;
+            this.metroLabel2.Text = "Fecha Final";
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(21, 15);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(79, 19);
+            this.metroLabel1.TabIndex = 3;
+            this.metroLabel1.Text = "Fecha Inicial";
+            // 
+            // mdtFinal
+            // 
+            this.mdtFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.mdtFinal.Location = new System.Drawing.Point(145, 37);
+            this.mdtFinal.MinimumSize = new System.Drawing.Size(0, 29);
+            this.mdtFinal.Name = "mdtFinal";
+            this.mdtFinal.Size = new System.Drawing.Size(116, 29);
+            this.mdtFinal.TabIndex = 2;
+            // 
+            // mdtInicial
+            // 
+            this.mdtInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.mdtInicial.Location = new System.Drawing.Point(5, 37);
+            this.mdtInicial.MinimumSize = new System.Drawing.Size(0, 29);
+            this.mdtInicial.Name = "mdtInicial";
+            this.mdtInicial.Size = new System.Drawing.Size(116, 29);
+            this.mdtInicial.TabIndex = 2;
+            // 
             // mbExportar
             // 
             this.mbExportar.Location = new System.Drawing.Point(518, 37);
@@ -81,6 +136,7 @@
             this.mbExportar.TabIndex = 1;
             this.mbExportar.Text = "Exportar";
             this.mbExportar.UseSelectable = true;
+            this.mbExportar.Click += new System.EventHandler(this.mbExportar_Click);
             // 
             // mbObtener
             // 
@@ -136,61 +192,6 @@
             this.layoutControlItem1.Size = new System.Drawing.Size(789, 359);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
-            // 
-            // mdtInicial
-            // 
-            this.mdtInicial.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.mdtInicial.Location = new System.Drawing.Point(5, 37);
-            this.mdtInicial.MinimumSize = new System.Drawing.Size(0, 29);
-            this.mdtInicial.Name = "mdtInicial";
-            this.mdtInicial.Size = new System.Drawing.Size(116, 29);
-            this.mdtInicial.TabIndex = 2;
-            // 
-            // mdtFinal
-            // 
-            this.mdtFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.mdtFinal.Location = new System.Drawing.Point(145, 37);
-            this.mdtFinal.MinimumSize = new System.Drawing.Size(0, 29);
-            this.mdtFinal.Name = "mdtFinal";
-            this.mdtFinal.Size = new System.Drawing.Size(116, 29);
-            this.mdtFinal.TabIndex = 2;
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(21, 15);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(79, 19);
-            this.metroLabel1.TabIndex = 3;
-            this.metroLabel1.Text = "Fecha Inicial";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(163, 15);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(74, 19);
-            this.metroLabel2.TabIndex = 3;
-            this.metroLabel2.Text = "Fecha Final";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(307, 15);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(53, 19);
-            this.metroLabel3.TabIndex = 3;
-            this.metroLabel3.Text = "Usuario";
-            // 
-            // mcbUsuarios
-            // 
-            this.mcbUsuarios.FormattingEnabled = true;
-            this.mcbUsuarios.ItemHeight = 23;
-            this.mcbUsuarios.Location = new System.Drawing.Point(276, 37);
-            this.mcbUsuarios.Name = "mcbUsuarios";
-            this.mcbUsuarios.Size = new System.Drawing.Size(121, 29);
-            this.mcbUsuarios.TabIndex = 4;
-            this.mcbUsuarios.UseSelectable = true;
             // 
             // xpCollectionUsuarios
             // 
