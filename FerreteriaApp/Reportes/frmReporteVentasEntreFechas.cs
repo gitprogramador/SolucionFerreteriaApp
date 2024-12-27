@@ -54,10 +54,6 @@ namespace FerreteriaApp.Reportes
         private void mbExportar_Click(object sender, EventArgs e)
         {
             gridControl1.ShowRibbonPrintPreview();
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
         }
     }
 }
