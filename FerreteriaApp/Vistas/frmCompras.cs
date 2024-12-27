@@ -43,7 +43,7 @@ namespace FerreteriaApp.Vistas
             slueProductos.EditValue = null;
             slueProveedores.EditValue = null;
             teCantidad.Clear();
-            tePrecioVenta.Clear();
+            tePrecioCompra.Clear();
             teTotal.Clear();
             slueProductos.Focus();
             detalle.Clear();
@@ -54,7 +54,7 @@ namespace FerreteriaApp.Vistas
         {
             slueProductos.EditValue = null;
             teCantidad.Clear();
-            tePrecioVenta.Clear();
+            tePrecioCompra.Clear();
             slueProductos.Focus();
         }
         private void CargarProductos()
@@ -129,11 +129,13 @@ namespace FerreteriaApp.Vistas
         {
             if (e.RowHandle >= 0)
             {
-                tePrecioVenta.Text = slueViewProductos.GetFocusedRowCellValue("PrecioCompra").ToString();
+                tePrecioCompra.Text = slueViewProductos.GetFocusedRowCellValue("PrecioCompra").ToString();
+                tePrecioVenta.Text = slueViewProductos.GetFocusedRowCellValue("PrecioVenta").ToString();
                 teCantidad.Select();
             }
             else
             {
+                tePrecioCompra.Clear();
                 tePrecioVenta.Clear();
             }
         }
@@ -149,19 +151,19 @@ namespace FerreteriaApp.Vistas
             }
 
             // Verifica cantidad y precio
-            if (string.IsNullOrEmpty(teCantidad.Text) || string.IsNullOrEmpty(tePrecioVenta.Text))
+            if (string.IsNullOrEmpty(teCantidad.Text) || string.IsNullOrEmpty(tePrecioCompra.Text))
             {
                 MessageBox.Show("Ingrese la cantidad y el precio de compra", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (!int.TryParse(teCantidad.Text, out int cantidad) || !decimal.TryParse(tePrecioVenta.Text, out decimal precioVenta))
+            if (!int.TryParse(teCantidad.Text, out int cantidad) || !decimal.TryParse(tePrecioCompra.Text, out decimal precioCompra) || !decimal.TryParse(tePrecioVenta.Text, out decimal precioVenta))
             {
                 MessageBox.Show("Cantidad y Precio deben ser valores numéricos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
-            if (cantidad <= 0 || precioVenta <= 0)
+            if (cantidad <= 0 || precioCompra <= 0)
             {
                 MessageBox.Show("Cantidad y Precio deben ser mayores a cero", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -177,7 +179,9 @@ namespace FerreteriaApp.Vistas
                 {
                     // Si el producto ya existe, actualizar su cantidad y subtotal
                     detalleCompra.Cantidad += cantidad;
-                    detalleCompra.MontoTotal = detalleCompra.Cantidad * detalleCompra.PrecioVenta;
+                    detalleCompra.PrecioCompra = precioCompra;
+                    detalleCompra.PrecioVenta = precioVenta;
+                    detalleCompra.MontoTotal = detalleCompra.Cantidad * detalleCompra.PrecioCompra;
 
                     // Marcar como encontrado
                     productoEncontrado = true;
@@ -195,8 +199,9 @@ namespace FerreteriaApp.Vistas
                 {
                     IdProducto = productoSeleccionado,
                     Cantidad = cantidad,
+                    PrecioCompra = precioCompra,
                     PrecioVenta = precioVenta,
-                    MontoTotal = cantidad * precioVenta
+                    MontoTotal = cantidad * precioCompra
                 };
                 detalle.Add(newDV);
             }
@@ -241,60 +246,41 @@ namespace FerreteriaApp.Vistas
                 Compra v = new Compra(unitOfWork1)
                 {
                     IdUsuario = usuario,
-                    IdProveedor = slueProveedores.EditValue as Proveedor,
+                    IdProveedor = (Proveedor)slueViewProveedores.GetFocusedRow(),
                     MontoTotal = total,
                 };
 
                 // Agregar los detalles de la venta
                 foreach (Detalle_compra detalleCompra in detalle)
                 {
+                    // Obtener el producto relacionado
+                    Producto producto = detalleCompra.IdProducto;
                     detalleCompra.IdCompra = v;
                     v.Detalle_compras.Add(detalleCompra); // Suponiendo que tienes una relación en la entidad
+                    if (producto != null)
+                    {
+                        // sumar el stock según la cantidad vendida
+                        producto.Stock += detalleCompra.Cantidad;
+                        producto.PrecioCompra = detalleCompra.PrecioCompra;
+                        producto.PrecioVenta = detalleCompra.PrecioVenta;
+                        // Guardar los cambios en el producto
+                        producto.Save();
+                    }
                 }
-
                 // Guardar los cambios en la base de datos
                 unitOfWork1.CommitChanges();
 
                 // Mostrar mensaje de éxito
-                MessageBox.Show("La venta se ha procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("La compra se ha procesado correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Limpiar el formulario para una nueva venta
                 Limpiar();
+                xpCollectionProductos.Reload();
             }
             catch (Exception ex)
             {
                 // Manejar errores
                 MessageBox.Show($"Ocurrió un error al procesar la venta: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
-            try
-            {
-                // Después de guardar la compra
-                foreach (Detalle_compra detalleCompra in detalle)
-                {
-                    // Obtener el producto relacionado
-                    Producto producto = detalleCompra.IdProducto;
-
-                    if (producto != null)
-                    {
-                        // sumar el stock según la cantidad vendida
-                        producto.Stock += detalleCompra.Cantidad;
-
-                        // Guardar los cambios en el producto
-                        producto.Save();
-                    }
-                }
-
-                // Confirmar cambios en la base de datos
-                unitOfWork1.CommitChanges();
-
-                // Mensaje de éxito
-                MessageBox.Show("El stock de los productos ha sido actualizado correctamente.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch (Exception ex)
-            {
-                // Manejar errores
-                MessageBox.Show($"Error al actualizar el stock: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

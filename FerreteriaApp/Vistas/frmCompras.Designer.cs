@@ -47,7 +47,7 @@
             this.colEstado = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn3 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn4 = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tePrecioVenta = new DevExpress.XtraEditors.TextEdit();
+            this.tePrecioCompra = new DevExpress.XtraEditors.TextEdit();
             this.teCantidad = new DevExpress.XtraEditors.TextEdit();
             this.sbAgregarProducto = new DevExpress.XtraEditors.SimpleButton();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
@@ -91,6 +91,8 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
+            this.tePrecioVenta = new DevExpress.XtraEditors.TextEdit();
+            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -99,7 +101,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioCompra.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -127,6 +129,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -135,21 +139,22 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(20, 60);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(569, 142);
+            this.panelControl1.Size = new System.Drawing.Size(569, 182);
             this.panelControl1.TabIndex = 1;
             // 
             // layoutControl2
             // 
             this.layoutControl2.Controls.Add(this.slueProductos);
-            this.layoutControl2.Controls.Add(this.tePrecioVenta);
+            this.layoutControl2.Controls.Add(this.tePrecioCompra);
             this.layoutControl2.Controls.Add(this.teCantidad);
             this.layoutControl2.Controls.Add(this.sbAgregarProducto);
+            this.layoutControl2.Controls.Add(this.tePrecioVenta);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(2, 2);
             this.layoutControl2.Name = "layoutControl2";
             this.layoutControl2.OptionsCustomizationForm.DesignTimeCustomizationFormPositionAndSize = new System.Drawing.Rectangle(1150, 0, 650, 400);
             this.layoutControl2.Root = this.layoutControlGroup1;
-            this.layoutControl2.Size = new System.Drawing.Size(565, 138);
+            this.layoutControl2.Size = new System.Drawing.Size(565, 178);
             this.layoutControl2.TabIndex = 0;
             this.layoutControl2.Text = "layoutControl2";
             // 
@@ -277,22 +282,22 @@
             this.gridColumn4.FieldName = "IdMedida!Key";
             this.gridColumn4.Name = "gridColumn4";
             // 
-            // tePrecioVenta
+            // tePrecioCompra
             // 
-            this.tePrecioVenta.Location = new System.Drawing.Point(121, 42);
-            this.tePrecioVenta.Name = "tePrecioVenta";
-            this.tePrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
-            this.tePrecioVenta.Properties.Appearance.Options.UseFont = true;
-            this.tePrecioVenta.Properties.Appearance.Options.UseTextOptions = true;
-            this.tePrecioVenta.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.tePrecioVenta.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
-            this.tePrecioVenta.Size = new System.Drawing.Size(432, 26);
-            this.tePrecioVenta.StyleController = this.layoutControl2;
-            this.tePrecioVenta.TabIndex = 5;
+            this.tePrecioCompra.Location = new System.Drawing.Point(121, 42);
+            this.tePrecioCompra.Name = "tePrecioCompra";
+            this.tePrecioCompra.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tePrecioCompra.Properties.Appearance.Options.UseFont = true;
+            this.tePrecioCompra.Properties.Appearance.Options.UseTextOptions = true;
+            this.tePrecioCompra.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tePrecioCompra.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.tePrecioCompra.Size = new System.Drawing.Size(432, 26);
+            this.tePrecioCompra.StyleController = this.layoutControl2;
+            this.tePrecioCompra.TabIndex = 5;
             // 
             // teCantidad
             // 
-            this.teCantidad.Location = new System.Drawing.Point(79, 72);
+            this.teCantidad.Location = new System.Drawing.Point(79, 102);
             this.teCantidad.Name = "teCantidad";
             this.teCantidad.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.teCantidad.Properties.Appearance.Options.UseFont = true;
@@ -307,7 +312,7 @@
             // 
             this.sbAgregarProducto.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
             this.sbAgregarProducto.Appearance.Options.UseFont = true;
-            this.sbAgregarProducto.Location = new System.Drawing.Point(12, 102);
+            this.sbAgregarProducto.Location = new System.Drawing.Point(12, 132);
             this.sbAgregarProducto.Name = "sbAgregarProducto";
             this.sbAgregarProducto.Size = new System.Drawing.Size(541, 24);
             this.sbAgregarProducto.StyleController = this.layoutControl2;
@@ -323,9 +328,10 @@
             this.layoutControlItem2,
             this.layoutControlItem7,
             this.layoutControlItem8,
-            this.layoutControlItem9});
+            this.layoutControlItem9,
+            this.layoutControlItem4});
             this.layoutControlGroup1.Name = "Root";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(565, 138);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(565, 178);
             this.layoutControlGroup1.TextVisible = false;
             // 
             // layoutControlItem2
@@ -345,7 +351,7 @@
             // 
             this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem7.Control = this.tePrecioVenta;
+            this.layoutControlItem7.Control = this.tePrecioCompra;
             this.layoutControlItem7.Location = new System.Drawing.Point(0, 30);
             this.layoutControlItem7.Name = "layoutControlItem7";
             this.layoutControlItem7.Size = new System.Drawing.Size(545, 30);
@@ -359,7 +365,7 @@
             this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
             this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
             this.layoutControlItem8.Control = this.teCantidad;
-            this.layoutControlItem8.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 90);
             this.layoutControlItem8.Name = "layoutControlItem8";
             this.layoutControlItem8.Size = new System.Drawing.Size(545, 30);
             this.layoutControlItem8.Text = "Cantidad";
@@ -370,9 +376,9 @@
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.sbAgregarProducto;
-            this.layoutControlItem9.Location = new System.Drawing.Point(0, 90);
+            this.layoutControlItem9.Location = new System.Drawing.Point(0, 120);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(545, 28);
+            this.layoutControlItem9.Size = new System.Drawing.Size(545, 38);
             this.layoutControlItem9.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem9.TextVisible = false;
             // 
@@ -380,7 +386,7 @@
             // 
             this.panelControl2.Controls.Add(this.layoutControl3);
             this.panelControl2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelControl2.Location = new System.Drawing.Point(20, 202);
+            this.panelControl2.Location = new System.Drawing.Point(20, 242);
             this.panelControl2.Name = "panelControl2";
             this.panelControl2.Size = new System.Drawing.Size(569, 92);
             this.panelControl2.TabIndex = 2;
@@ -523,10 +529,10 @@
             this.layoutControl1.Controls.Add(this.sbProcesar);
             this.layoutControl1.Controls.Add(this.sbCancelar);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutControl1.Location = new System.Drawing.Point(20, 294);
+            this.layoutControl1.Location = new System.Drawing.Point(20, 334);
             this.layoutControl1.Name = "layoutControl1";
             this.layoutControl1.Root = this.Root;
-            this.layoutControl1.Size = new System.Drawing.Size(569, 403);
+            this.layoutControl1.Size = new System.Drawing.Size(569, 375);
             this.layoutControl1.TabIndex = 3;
             this.layoutControl1.Text = "layoutControl1";
             // 
@@ -536,7 +542,7 @@
             this.gridControl1.Location = new System.Drawing.Point(12, 40);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(545, 351);
+            this.gridControl1.Size = new System.Drawing.Size(545, 323);
             this.gridControl1.TabIndex = 4;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -604,6 +610,7 @@
             // 
             // colPrecioCompra1
             // 
+            this.colPrecioCompra1.Caption = "Compra";
             this.colPrecioCompra1.FieldName = "PrecioCompra";
             this.colPrecioCompra1.Name = "colPrecioCompra1";
             this.colPrecioCompra1.Visible = true;
@@ -611,22 +618,25 @@
             // 
             // colPrecioVenta1
             // 
+            this.colPrecioVenta1.Caption = "Venta";
             this.colPrecioVenta1.FieldName = "PrecioVenta";
             this.colPrecioVenta1.Name = "colPrecioVenta1";
+            this.colPrecioVenta1.Visible = true;
+            this.colPrecioVenta1.VisibleIndex = 2;
             // 
             // colCantidad
             // 
             this.colCantidad.FieldName = "Cantidad";
             this.colCantidad.Name = "colCantidad";
             this.colCantidad.Visible = true;
-            this.colCantidad.VisibleIndex = 2;
+            this.colCantidad.VisibleIndex = 3;
             // 
             // colMontoTotal
             // 
             this.colMontoTotal.FieldName = "MontoTotal";
             this.colMontoTotal.Name = "colMontoTotal";
             this.colMontoTotal.Visible = true;
-            this.colMontoTotal.VisibleIndex = 3;
+            this.colMontoTotal.VisibleIndex = 4;
             // 
             // gridColumn9
             // 
@@ -669,7 +679,7 @@
             this.layoutControlItem10,
             this.layoutControlItem11});
             this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(569, 403);
+            this.Root.Size = new System.Drawing.Size(569, 375);
             this.Root.TextVisible = false;
             // 
             // layoutControlItem1
@@ -677,7 +687,7 @@
             this.layoutControlItem1.Control = this.gridControl1;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 28);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(549, 355);
+            this.layoutControlItem1.Size = new System.Drawing.Size(549, 327);
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
@@ -704,11 +714,39 @@
             this.xpCollection1.ObjectType = typeof(FerreteriaApp.bdatosfer.Usuario);
             this.xpCollection1.Session = this.unitOfWork1;
             // 
+            // tePrecioVenta
+            // 
+            this.tePrecioVenta.Location = new System.Drawing.Point(105, 72);
+            this.tePrecioVenta.Name = "tePrecioVenta";
+            this.tePrecioVenta.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.tePrecioVenta.Properties.Appearance.Options.UseFont = true;
+            this.tePrecioVenta.Properties.Appearance.Options.UseTextOptions = true;
+            this.tePrecioVenta.Properties.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.tePrecioVenta.Properties.Appearance.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.tePrecioVenta.Size = new System.Drawing.Size(448, 26);
+            this.tePrecioVenta.StyleController = this.layoutControl2;
+            this.tePrecioVenta.TabIndex = 5;
+            // 
+            // layoutControlItem4
+            // 
+            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 12F);
+            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
+            this.layoutControlItem4.Control = this.tePrecioVenta;
+            this.layoutControlItem4.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.layoutControlItem4.CustomizationFormText = "Precio Compra";
+            this.layoutControlItem4.Location = new System.Drawing.Point(0, 60);
+            this.layoutControlItem4.Name = "layoutControlItem4";
+            this.layoutControlItem4.Size = new System.Drawing.Size(545, 30);
+            this.layoutControlItem4.Text = "Precio Venta";
+            this.layoutControlItem4.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
+            this.layoutControlItem4.TextSize = new System.Drawing.Size(88, 19);
+            this.layoutControlItem4.TextToControlDistance = 5;
+            // 
             // frmCompras
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(609, 717);
+            this.ClientSize = new System.Drawing.Size(609, 729);
             this.Controls.Add(this.layoutControl1);
             this.Controls.Add(this.panelControl2);
             this.Controls.Add(this.panelControl1);
@@ -722,7 +760,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.xpCollectionProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unitOfWork1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.slueViewProductos)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioCompra.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teCantidad.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -750,6 +788,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tePrecioVenta.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -772,7 +812,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colEstado;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraEditors.TextEdit tePrecioVenta;
+        private DevExpress.XtraEditors.TextEdit tePrecioCompra;
         private DevExpress.XtraEditors.TextEdit teCantidad;
         private DevExpress.XtraEditors.SimpleButton sbAgregarProducto;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
@@ -818,5 +858,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn colMontoTotal;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
         private DevExpress.Xpo.XPCollection xpCollection1;
+        private DevExpress.XtraEditors.TextEdit tePrecioVenta;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
     }
 }

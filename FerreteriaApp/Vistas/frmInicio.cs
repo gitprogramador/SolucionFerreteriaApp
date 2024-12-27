@@ -151,7 +151,7 @@ namespace FerreteriaApp.Vistas
 
                 // Crear una nueva serie para mostrar los datos
                 DevExpress.XtraCharts.Series series = new DevExpress.XtraCharts.Series("Stock Actual", DevExpress.XtraCharts.ViewType.Bar);
-
+      
                 // Agregar puntos a la serie desde los datos
                 foreach (DataRow row in productos.Rows)
                 {

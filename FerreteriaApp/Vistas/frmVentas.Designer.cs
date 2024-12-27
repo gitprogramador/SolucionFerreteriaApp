@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVentas));
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
             this.slueProductos = new DevExpress.XtraEditors.SearchLookUpEdit();
@@ -93,6 +94,9 @@
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.xpCollection1 = new DevExpress.Xpo.XPCollection(this.components);
+            this.btnAddCliente = new DevExpress.XtraEditors.SimpleButton();
+            this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.xpCollectionRoles = new DevExpress.Xpo.XPCollection(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
@@ -133,6 +137,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionRoles)).BeginInit();
             this.SuspendLayout();
             // 
             // panelControl1
@@ -397,6 +403,7 @@
             this.layoutControl3.Controls.Add(this.tePago);
             this.layoutControl3.Controls.Add(this.teCambio);
             this.layoutControl3.Controls.Add(this.teTotal);
+            this.layoutControl3.Controls.Add(this.btnAddCliente);
             this.layoutControl3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl3.Location = new System.Drawing.Point(2, 2);
             this.layoutControl3.Name = "layoutControl3";
@@ -421,7 +428,7 @@
             this.slueCliente.Properties.NullText = "Seleccione un Cliente";
             this.slueCliente.Properties.PopupView = this.slueViewClientes;
             this.slueCliente.Properties.ValueMember = "IdCliente";
-            this.slueCliente.Size = new System.Drawing.Size(617, 26);
+            this.slueCliente.Size = new System.Drawing.Size(551, 26);
             this.slueCliente.StyleController = this.layoutControl3;
             this.slueCliente.TabIndex = 4;
             // 
@@ -530,7 +537,8 @@
             this.layoutControlItem3,
             this.layoutControlItem4,
             this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem12});
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(756, 148);
             this.layoutControlGroup2.TextVisible = false;
@@ -542,7 +550,7 @@
             this.layoutControlItem3.Control = this.slueCliente;
             this.layoutControlItem3.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem3.Name = "layoutControlItem3";
-            this.layoutControlItem3.Size = new System.Drawing.Size(736, 30);
+            this.layoutControlItem3.Size = new System.Drawing.Size(670, 30);
             this.layoutControlItem3.Text = "Cliente";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(103, 19);
             // 
@@ -753,6 +761,31 @@
             this.xpCollection1.ObjectType = typeof(FerreteriaApp.bdatosfer.Usuario);
             this.xpCollection1.Session = this.unitOfWork1;
             // 
+            // btnAddCliente
+            // 
+            this.btnAddCliente.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnAddCliente.ImageOptions.Location = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
+            this.btnAddCliente.Location = new System.Drawing.Point(682, 12);
+            this.btnAddCliente.Name = "btnAddCliente";
+            this.btnAddCliente.Size = new System.Drawing.Size(62, 22);
+            this.btnAddCliente.StyleController = this.layoutControl3;
+            this.btnAddCliente.TabIndex = 8;
+            this.btnAddCliente.Click += new System.EventHandler(this.btnAddCliente_Click);
+            // 
+            // layoutControlItem12
+            // 
+            this.layoutControlItem12.Control = this.btnAddCliente;
+            this.layoutControlItem12.Location = new System.Drawing.Point(670, 0);
+            this.layoutControlItem12.Name = "layoutControlItem12";
+            this.layoutControlItem12.Size = new System.Drawing.Size(66, 30);
+            this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem12.TextVisible = false;
+            // 
+            // xpCollectionRoles
+            // 
+            this.xpCollectionRoles.ObjectType = typeof(FerreteriaApp.bdatosfer.Rol);
+            this.xpCollectionRoles.Session = this.unitOfWork1;
+            // 
             // frmVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -805,6 +838,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xpCollection1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xpCollectionRoles)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -875,5 +910,8 @@
         private DevExpress.XtraGrid.Columns.GridColumn colCantidad;
         private DevExpress.XtraGrid.Columns.GridColumn colSubTotal;
         private DevExpress.Xpo.XPCollection xpCollection1;
+        private DevExpress.XtraEditors.SimpleButton btnAddCliente;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.Xpo.XPCollection xpCollectionRoles;
     }
 }

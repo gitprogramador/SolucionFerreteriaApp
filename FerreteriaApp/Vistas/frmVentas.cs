@@ -326,7 +326,7 @@ namespace FerreteriaApp.Vistas
                 Venta v = new Venta(unitOfWork1)
                 {
                     IdUsuario = usuario,
-                    IdCliente = slueCliente.EditValue as Cliente,
+                    IdCliente = (Cliente)slueViewClientes.GetFocusedRow(),
                     MontoPago = montoPago,
                     MontoCambio = Convert.ToDecimal(teCambio.Text),
                     MontoTotal = total,
@@ -449,6 +449,30 @@ namespace FerreteriaApp.Vistas
                 {
                     MessageBox.Show("No se seleccionó ningún producto.");
                 }
+            }
+        }
+
+        private void btnAddCliente_Click(object sender, EventArgs e)
+        {
+            // Buscar el usuario en la colección
+            var usuario = xpCollection1.OfType<Usuario>()
+                .FirstOrDefault(u => u.IdUsuario == IdUsuario);
+
+            if (usuario != null)
+            {
+                // Obtener el rol del usuario
+                Rol rol = usuario.IdRol; // Asumiendo que Usuario tiene una propiedad llamada "Rol" de tipo Rol
+
+                // Pasar el rol al formulario de clientes
+                frmClientes frm = new frmClientes(rol);
+                frm.ShowDialog();
+
+                // Recargar la colección de clientes
+                xpCollectionClientes.Reload();
+            }
+            else
+            {
+                MessageBox.Show("Usuario no encontrado", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
