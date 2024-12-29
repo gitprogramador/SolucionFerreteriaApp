@@ -24,14 +24,14 @@ namespace FerreteriaApp.Reportes
             try
             {
                 // Obtener las fechas seleccionadas por el usuario
-                DateTime fechaInicio = mdtInicial.Value;
-                DateTime fechaFin = mdtFinal.Value;
+                DateTime fechaInicio = mdtInicial.Value.Date; // Fecha inicial a las 00:00:00
+                DateTime fechaFin = mdtFinal.Value.Date.AddDays(1).AddSeconds(-1); // Fecha final a las 23:59:59
 
                 // Validar que la fecha final no sea menor que la fecha inicial
                 if (fechaFin < fechaInicio)
                 {
                     MessageBox.Show("La fecha final no puede ser menor a la fecha inicial. Por favor, seleccione un rango de fechas válido.", "Error de validación", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; // Salir del método sin cargar los datos
+                    return;
                 }
 
                 // Obtener los datos del procedimiento almacenado
@@ -45,6 +45,7 @@ namespace FerreteriaApp.Reportes
                 MessageBox.Show("Error al cargar los datos: " + ex.Message);
             }
         }
+
 
         private void mbObtener_Click(object sender, EventArgs e)
         {

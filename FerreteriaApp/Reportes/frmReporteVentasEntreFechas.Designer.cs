@@ -163,6 +163,7 @@
             this.mbObtener.TabIndex = 0;
             this.mbObtener.Text = "OBTENER";
             this.mbObtener.UseSelectable = true;
+            this.mbObtener.Click += new System.EventHandler(this.mbObtener_Click);
             // 
             // frmReporteVentasEntreFechas
             // 
