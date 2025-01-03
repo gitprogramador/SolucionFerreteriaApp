@@ -365,6 +365,44 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'bdatosfer'
 --
+/*!50003 DROP PROCEDURE IF EXISTS `ComprasEntreFechas` */;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+CREATE DEFINER=`root`@`localhost` PROCEDURE `ComprasEntreFechas`(
+    IN p_FechaInicio DATE,
+    IN p_FechaFin DATE
+)
+BEGIN
+  -- Ajustar la fecha final al final del día
+    SET p_FechaFin = DATE_ADD(p_FechaFin, INTERVAL 1 DAY) - INTERVAL 1 SECOND;
+
+    SELECT 
+        c.IdCompra AS `ID Compra`,
+        p.RazonSocial AS `Proveedor`,
+        u.NombreCompleto AS `Usuario`,
+        c.MontoTotal AS `Monto Total`,
+        c.FechaRegistro AS `Fecha de Registro`
+    FROM 
+        compra c
+    LEFT JOIN proveedor p ON c.IdProveedor = p.IdProveedor
+    LEFT JOIN usuario u ON c.IdUsuario = u.IdUsuario
+    WHERE 
+        DATE(c.FechaRegistro) BETWEEN p_FechaInicio AND p_FechaFin
+    ORDER BY 
+        c.FechaRegistro ASC;
+END ;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ComprasEntreFechasPorUsuario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -497,41 +535,6 @@ DELIMITER ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
 /*!50003 SET character_set_results = @saved_cs_results */ ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `ReporteComprasEntreFechas` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8mb4 */ ;
-/*!50003 SET character_set_results = utf8mb4 */ ;
-/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `ReporteComprasEntreFechas`(
-    IN FechaInicio DATE,
-    IN FechaFin DATE
-)
-BEGIN
-    SELECT 
-        c.IdCompra AS `ID Compra`,
-        p.RazonSocial AS `Proveedor`,
-        u.NombreCompleto AS `Usuario`,
-        c.MontoTotal AS `Monto Total`,
-        c.FechaRegistro AS `Fecha de Registro`
-    FROM 
-        compra c
-    LEFT JOIN proveedor p ON c.IdProveedor = p.IdProveedor
-    LEFT JOIN usuario u ON c.IdUsuario = u.IdUsuario
-    WHERE 
-        DATE(c.FechaRegistro) BETWEEN FechaInicio AND FechaFin
-    ORDER BY 
-        c.FechaRegistro ASC;
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!50003 DROP PROCEDURE IF EXISTS `ReporteInventario` */;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -626,6 +629,9 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `VentasEntreFechas`(
     IN p_FechaFin DATETIME
 )
 BEGIN
+    -- Ajustar la fecha final al final del día
+    SET p_FechaFin = DATE_ADD(p_FechaFin, INTERVAL 1 DAY) - INTERVAL 1 SECOND;
+
     SELECT 
         v.IdVenta,
         v.IdUsuario,
@@ -701,4 +707,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-26 23:08:12
+-- Dump completed on 2024-12-29 14:29:47
