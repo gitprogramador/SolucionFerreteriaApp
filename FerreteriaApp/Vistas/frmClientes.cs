@@ -102,7 +102,7 @@ namespace FerreteriaApp.Vistas
                 teNombreCompleto.Text = gridView1.GetFocusedRowCellValue("NombreCompleto").ToString();
                 teTel.Text = gridView1.GetFocusedRowCellValue("Telefono").ToString();
                 teCorreo.Text = gridView1.GetFocusedRowCellValue("Correo").ToString();
-                if (rol.IdRol == 2)
+                if (rol.IdRol == 2 || rol.IdRol == 1)
                 {
                     Botones(false, false, true, false, true, true, false);
                 }
@@ -213,7 +213,7 @@ namespace FerreteriaApp.Vistas
 
         private void frmClientes_Load_1(object sender, EventArgs e)
         {
-            if (rol.IdRol == 2)
+            if (rol.IdRol == 2 || rol.IdRol == 1)
             {
                 Botones(true,false,false,false,false,false,false);
             } else if(rol.IdRol == 3){

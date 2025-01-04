@@ -269,9 +269,13 @@ namespace FerreteriaApp.Vistas
         }
         private void Permisos()
         {
-            if (Rol.IdRol == 2)
+            if (Rol.IdRol ==1)
             {
-                BotonesMenuStrip(false, true, true, true, true, true, true, false, true);
+                BotonesMenuStrip(true, true, true, true, true, true, true, false, true);
+            }
+            else if (Rol.IdRol == 2)
+            {
+                BotonesMenuStrip(false, true, true, true, true, false, true, false, true);
                 BotonesReporteVendedor(false,false);
             }
             else if (Rol.IdRol == 3)

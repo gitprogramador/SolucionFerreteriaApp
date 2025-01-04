@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -69,13 +70,13 @@ namespace FerreteriaApp.Vistas
         private void sbNuevo_Click(object sender, EventArgs e)
         {
             Limpiar();
-            Botones(false,true,false,false,true,true,false);
+                Botones(false, true, false, false, true, true, false);
         }
 
         private void sbCancelar_Click(object sender, EventArgs e)
         {
             Limpiar();
-            Botones(true, false, false, false, false,false, false);
+                Botones(true, false, false, false, false, false, false);
         }
 
         private void sbGuardar_Click(object sender, EventArgs e)
@@ -88,9 +89,18 @@ namespace FerreteriaApp.Vistas
             try
             {
                 // Validación de campos vacíos
-                if (rol == null || string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(usuario) || string.IsNullOrEmpty(pwd))
+                if (rol == null || string.IsNullOrWhiteSpace(nombre) || string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(pwd))
                 {
-                    MessageBox.Show("Campos Requeridos", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Todos los campos son obligatorios.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+
+                // Verificar si el usuario ya existe
+                Usuario usuarioExistente = xpCollectionUsuarios.OfType<Usuario>()
+                                          .FirstOrDefault(u => u.Username.Equals(usuario, StringComparison.OrdinalIgnoreCase));
+                if (usuarioExistente != null)
+                {
+                    MessageBox.Show("El nombre de usuario ya existe. Por favor, ingrese uno diferente.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -104,7 +114,6 @@ namespace FerreteriaApp.Vistas
                     Estado = 1
                 };
 
-                // Verificar que no haya registros vacíos antes de guardar
                 newuser.Save();
                 unitOfWork1.CommitChanges();  // Confirmar los cambios
 
@@ -120,7 +129,6 @@ namespace FerreteriaApp.Vistas
                 // Mostrar mensaje de error
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -130,7 +138,20 @@ namespace FerreteriaApp.Vistas
                 teNombreCompleto.Text = gridView1.GetFocusedRowCellValue("NombreCompleto").ToString();
                 teUsuario.Text = gridView1.GetFocusedRowCellValue("Username").ToString();
                 cbeRol.EditValue = gridView1.GetFocusedRowCellValue("IdRol!Key");
-                Botones(false, false, true, true, true,true, true);
+
+                // Obtener el usuario actual de XPCollection
+            Usuario usuarioActual = xpCollectionUsuarios.OfType<Usuario>()
+                                       .FirstOrDefault(u => u.IdUsuario == UsuarioActualId);
+
+                if (usuarioActual.IdRol.IdRol == 4)
+                {
+                    Botones(false, false, true, true, true, true, true);
+                }
+                else
+                {
+                    Botones(false, false, true, false, true, true, true);
+
+                }
             }
         }
 
