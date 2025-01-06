@@ -27,9 +27,13 @@ namespace FerreteriaApp.Vistas
         {
             if (p)
             {
-                if (rol.IdRol == 2 || rol.IdRol == 1)
+                if (rol.IdRol == 2)
                 {   
                     Botones(false, false, true, false, true, true, false);
+                }
+                else if (rol.IdRol == 1)
+                {
+                    Botones(false, false, true, false, true, true, true);
                 }
                 else if (rol.IdRol == 3)
                 {

@@ -31,7 +31,7 @@ namespace FerreteriaApp.Vistas
             teTel.Clear();
             teDocumento.Focus();
         }
-        private void Botones(bool nuevo, bool guardar, bool actualizar, bool eliminar, bool cancelar, bool campos,bool estado)
+        private void Botones(bool nuevo, bool guardar, bool actualizar, bool eliminar, bool cancelar, bool campos, bool estado)
         {
             sbNuevo.Enabled = nuevo;
             sbGuardar.Enabled = guardar;
@@ -60,10 +60,10 @@ namespace FerreteriaApp.Vistas
 
         private void sbCambiarEstado_Click(object sender, EventArgs e)
         {
-            if (gridView1.GetFocusedRow() == null || 
-                string.IsNullOrEmpty(teDocumento.Text)||
-                string.IsNullOrEmpty(teCorreo.Text)||
-                string.IsNullOrEmpty(teNombreCompleto.Text)||
+            if (gridView1.GetFocusedRow() == null ||
+                string.IsNullOrEmpty(teDocumento.Text) ||
+                string.IsNullOrEmpty(teCorreo.Text) ||
+                string.IsNullOrEmpty(teNombreCompleto.Text) ||
                 string.IsNullOrEmpty(teTel.Text)
                 )
             {
@@ -85,7 +85,7 @@ namespace FerreteriaApp.Vistas
                 unitOfWork1.CommitChanges();
                 Limpiar();
                 xpCollection1.Reload();
-                Botones(true, false, false, false, false, false,false);
+                Botones(true, false, false, false, false, false, false);
             }
             catch (Exception)
             {
@@ -102,9 +102,13 @@ namespace FerreteriaApp.Vistas
                 teNombreCompleto.Text = gridView1.GetFocusedRowCellValue("NombreCompleto").ToString();
                 teTel.Text = gridView1.GetFocusedRowCellValue("Telefono").ToString();
                 teCorreo.Text = gridView1.GetFocusedRowCellValue("Correo").ToString();
-                if (rol.IdRol == 2 || rol.IdRol == 1)
+                if (rol.IdRol == 2)
                 {
                     Botones(false, false, true, false, true, true, false);
+                }
+                else if (rol.IdRol == 1)
+                {
+                    Botones(false, false, true, false, true, true, true);
                 }
                 else if (rol.IdRol == 3)
                 {
@@ -117,32 +121,32 @@ namespace FerreteriaApp.Vistas
             }
         }
 
-        private void sbEliminar_Click(object sender, EventArgs e)
-        {
-            if (gridView1.GetFocusedRow() == null ||
-                string.IsNullOrEmpty(teDocumento.Text) ||
-                string.IsNullOrEmpty(teCorreo.Text) ||
-                string.IsNullOrEmpty(teNombreCompleto.Text) ||
-                string.IsNullOrEmpty(teTel.Text))
+         private void sbEliminar_Click(object sender, EventArgs e)
             {
-                MessageBox.Show("Seleccione un registro", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                return;
-            }
-            Cliente Seleccionado = (Cliente)gridView1.GetFocusedRow();
-            try
-            {
-                Seleccionado.Delete();
-                unitOfWork1.CommitChanges();
-                Limpiar();
-                xpCollection1.Reload();
-                Botones(true, false, false, false, false, false,false);
-            }
-            catch (Exception)
-            {
+                if (gridView1.GetFocusedRow() == null ||
+                    string.IsNullOrEmpty(teDocumento.Text) ||
+                    string.IsNullOrEmpty(teCorreo.Text) ||
+                    string.IsNullOrEmpty(teNombreCompleto.Text) ||
+                    string.IsNullOrEmpty(teTel.Text))
+                {
+                    MessageBox.Show("Seleccione un registro", "Información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+                Cliente Seleccionado = (Cliente)gridView1.GetFocusedRow();
+                try
+                {
+                    Seleccionado.Delete();
+                    unitOfWork1.CommitChanges();
+                    Limpiar();
+                    xpCollection1.Reload();
+                    Botones(true, false, false, false, false, false,false);
+                }
+                catch (Exception)
+                {
 
-                throw;
+                    throw;
+                }
             }
-        }
 
         private void sbActualizar_Click(object sender, EventArgs e)
         {
